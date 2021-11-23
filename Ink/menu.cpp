@@ -15,8 +15,15 @@ menu::~menu()
     delete ui;
 }
 
+void menu::on_pushButton_clicked() // New image
+{
+    newImageScreen = new NewImage(NULL);
+    newImageScreen->setModal(true);
+    newImageScreen->exec();
+}
 
-void menu::on_pushButton_clicked() // New Image
+
+void menu::on_pushButton_2_clicked() // Import image
 {
 
 }
