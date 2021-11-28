@@ -11,15 +11,18 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     menu.cpp \
-    newimage.cpp
+    newimage.cpp \
+    templates.cpp
 
 HEADERS += \
     menu.h \
-    newimage.h
+    newimage.h \
+    templates.h
 
 FORMS += \
     menu.ui \
-    newimage.ui
+    newimage.ui \
+    templates.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

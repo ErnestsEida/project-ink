@@ -7,6 +7,7 @@ NewImage::NewImage(QWidget *parent) :
     ui(new Ui::NewImage)
 {
     ui->setupUi(this);
+
     this->setMaximumSize(this->width(), maximumHeight());
     this->setWindowTitle("Ink - New Image");
 
@@ -18,6 +19,27 @@ NewImage::NewImage(QWidget *parent) :
 NewImage::~NewImage()
 {
     delete ui;
+}
+
+void NewImage::recieveTemplate(int width, int height, QString colorScheme, QString measurments)
+{
+    ui->widthInput->setValue(width);
+    ui->heightInput->setValue(height);
+    foreach(QRadioButton *x, ui->ColorScheme->findChildren<QRadioButton*>())
+    {
+        if(x->objectName() == colorScheme)
+        {
+            x->setChecked(true);
+        }
+    }
+
+    foreach(QRadioButton *x, ui->measurements->findChildren<QRadioButton*>())
+    {
+        if(x->objectName() == measurments)
+        {
+            x->setChecked(true);
+        }
+    }
 }
 
 QHash<QString, int> GetMargins(QString measurment)
@@ -90,5 +112,8 @@ void NewImage::on_pushButton_2_clicked() // Cancel Button
 
 void NewImage::on_pushButton_3_clicked() // Template Button
 {
-
+    wTemplate = new templates(this);
+    wTemplate->setModal(true);
+    connect(wTemplate, &templates::sendTemplate, this, &NewImage::recieveTemplate);
+    wTemplate->exec();
 }
