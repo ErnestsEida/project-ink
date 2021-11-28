@@ -16,6 +16,9 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="8" column="1">
     <widget class="QPushButton" name="pushButton_2">
+     <property name="styleSheet">
+      <string notr="true">background: red;</string>
+     </property>
      <property name="text">
       <string>Cancel</string>
      </property>
@@ -23,6 +26,9 @@
    </item>
    <item row="7" column="0" colspan="2">
     <widget class="QPushButton" name="pushButton_3">
+     <property name="styleSheet">
+      <string notr="true">background: yellow;</string>
+     </property>
      <property name="text">
       <string>Templates</string>
      </property>
@@ -183,6 +189,9 @@
    </item>
    <item row="8" column="0">
     <widget class="QPushButton" name="pushButton">
+     <property name="styleSheet">
+      <string notr="true">background:lightgreen;</string>
+     </property>
      <property name="text">
       <string>Create</string>
      </property>

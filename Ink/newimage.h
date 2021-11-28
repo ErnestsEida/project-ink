@@ -2,6 +2,7 @@
 #define NEWIMAGE_H
 
 #include <QDialog>
+#include "templates.h"
 
 namespace Ui {
 class NewImage;
@@ -22,7 +23,11 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+public slots:
+    void recieveTemplate(int width, int height, QString colorScheme, QString measurments);
+
 private:
+    templates *wTemplate;
     Ui::NewImage *ui;
 };
 
