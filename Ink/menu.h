@@ -6,6 +6,7 @@
 #include <QtWidgets>
 #include <QtCore>
 #include  "newimage.h"
+#include "imageimport.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
@@ -27,5 +28,6 @@ private slots:
 private:
     Ui::menu *ui;
     NewImage *newImageScreen;
+    ImageImport *imageImportScreen;
 };
 #endif // MENU_H
