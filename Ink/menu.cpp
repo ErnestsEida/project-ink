@@ -25,6 +25,8 @@ void menu::on_pushButton_clicked() // New image
 
 void menu::on_pushButton_2_clicked() // Import image
 {
-
+    imageImportScreen = new ImageImport(NULL);
+    imageImportScreen->setModal(true);
+    imageImportScreen->exec();
 }
 
