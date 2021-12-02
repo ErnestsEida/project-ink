@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    editor.cpp \
     imageimport.cpp \
     main.cpp \
     menu.cpp \
@@ -16,12 +17,14 @@ SOURCES += \
     templates.cpp
 
 HEADERS += \
+    editor.h \
     imageimport.h \
     menu.h \
     newimage.h \
     templates.h
 
 FORMS += \
+    editor.ui \
     imageimport.ui \
     menu.ui \
     newimage.ui \

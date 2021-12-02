@@ -2,6 +2,7 @@
 #define IMAGEIMPORT_H
 
 #include <QDialog>
+#include "editor.h"
 
 namespace Ui {
 class ImageImport;
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::ImageImport *ui;
+    Editor *editor;
 };
 
 #endif // IMAGEIMPORT_H

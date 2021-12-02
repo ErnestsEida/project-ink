@@ -26,7 +26,10 @@ void ImageImport::on_closeButton_clicked() // CLOSE BUTTON
 
 void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
 {
-
+    QString path = ui->path->toPlainText();
+    editor = new Editor(this, path);
+    editor->show();
+    this->close();
 }
 
 
