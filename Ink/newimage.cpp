@@ -1,6 +1,7 @@
 #include "newimage.h"
 #include "ui_newimage.h"
 #include "menu.h"
+#include "cmath"
 
 NewImage::NewImage(QWidget *parent) :
     QDialog(parent),
@@ -20,6 +21,8 @@ NewImage::~NewImage()
 {
     delete ui;
 }
+
+// SELF DEFINED FUNCTIONS ==========================
 
 void NewImage::recieveTemplate(int width, int height, QString colorScheme, QString measurments)
 {
@@ -63,6 +66,18 @@ QHash<QString, int> GetMargins(QString measurment)
     return margins;
 }
 
+int InchToPix(int inch)
+{
+    return inch * 96;
+}
+
+int CmToPix(int cm)
+{
+    return floor(cm * 37.79527);
+}
+
+// ===============================================
+
 void NewImage::on_pushButton_clicked() // Create Button
 {
     QString measurment;
@@ -100,7 +115,11 @@ void NewImage::on_pushButton_clicked() // Create Button
     }
     else
     {
-        // OPEN EDITOR
+        if(measurment == "centimeters") { width = CmToPix(width); height = CmToPix(height); }
+        else if(measurment == "inches") { width = InchToPix(width); height = InchToPix(height); }
+        editor = new Editor(NULL, width, height, colorScheme);
+        editor->show();
+        this->close();
     }
 }
 

@@ -26,7 +26,17 @@ void ImageImport::on_closeButton_clicked() // CLOSE BUTTON
 
 void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
 {
-
+    QString path = ui->path->toPlainText();
+    if(path == "")
+    {
+        ui->errorLabel->setText("Please select an image!");
+    }
+    else
+    {
+        editor = new Editor(this, path);
+        editor->show();
+        this->close();
+    }
 }
 
 
@@ -34,5 +44,6 @@ void ImageImport::on_toolButton_clicked() // PATH CHOICE BUTTON
 {
     QString fileName = QFileDialog::getOpenFileName(this, "Open Image","/home", "Images (*.png *.jpeg *.jpg *.ppm *.xbm *.xpm *.bmp *.gif)");
     ui->path->setText(fileName);
+    ui->errorLabel->setText("");
 }
 

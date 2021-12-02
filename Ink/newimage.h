@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "templates.h"
+#include "editor.h"
 
 namespace Ui {
 class NewImage;
@@ -29,6 +30,7 @@ public slots:
 private:
     templates *wTemplate;
     Ui::NewImage *ui;
+    Editor *editor;
 };
 
 #endif // NEWIMAGE_H
