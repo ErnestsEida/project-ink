@@ -7,6 +7,7 @@
 #include <QtCore>
 #include  "newimage.h"
 #include "imageimport.h"
+#include "options.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
@@ -25,9 +26,12 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_actionOptions_triggered();
+
 private:
     Ui::menu *ui;
     NewImage *newImageScreen;
     ImageImport *imageImportScreen;
+    Options *options;
 };
 #endif // MENU_H

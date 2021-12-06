@@ -30,3 +30,11 @@ void menu::on_pushButton_2_clicked() // Import image
     imageImportScreen->exec();
 }
 
+
+void menu::on_actionOptions_triggered() // Options Trigger
+{
+    options = new Options(this);
+    options->setModal(true);
+    options->exec();
+}
+

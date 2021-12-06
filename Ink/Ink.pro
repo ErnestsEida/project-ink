@@ -14,6 +14,7 @@ SOURCES += \
     main.cpp \
     menu.cpp \
     newimage.cpp \
+    options.cpp \
     templates.cpp
 
 HEADERS += \
@@ -21,6 +22,7 @@ HEADERS += \
     imageimport.h \
     menu.h \
     newimage.h \
+    options.h \
     templates.h
 
 FORMS += \
@@ -28,6 +30,7 @@ FORMS += \
     imageimport.ui \
     menu.ui \
     newimage.ui \
+    options.ui \
     templates.ui
 
 # Default rules for deployment.

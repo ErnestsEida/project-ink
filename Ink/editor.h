@@ -2,6 +2,7 @@
 #define EDITOR_H
 
 #include <QMainWindow>
+#include "options.h"
 
 namespace Ui {
 class Editor;
@@ -18,6 +19,7 @@ public:
 
 private:
     Ui::Editor *ui;
+    Options *options;
 };
 
 #endif // EDITOR_H
