@@ -29,3 +29,11 @@ Editor::~Editor()
 {
     delete ui;
 }
+
+void Editor::on_actionOptions_triggered() // Options
+{
+    options = new Options();
+    options->setModal(true);
+    options->exec();
+}
+

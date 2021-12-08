@@ -1,5 +1,8 @@
 #include "menu.h"
 #include "ui_menu.h"
+#include "optionsmanager.h"
+
+const QString InkPath = "/home/"+qgetenv("USER")+"/Documents/ink";
 
 menu::menu(QWidget *parent)
     : QMainWindow(parent)
@@ -8,6 +11,16 @@ menu::menu(QWidget *parent)
     ui->setupUi(this);
     this->setWindowTitle("Ink - Menu");
     this->setFixedSize(this->width(), this->height());
+
+    // FIRST INITIALIZATION
+    if (!QDir(InkPath).exists())
+    {
+       QDir().mkdir(InkPath);
+       // CREATE OPTIONS
+       OptionsManager *manager = new OptionsManager();
+       manager->CreateOptionFiles();
+       delete manager;
+    }
 }
 
 menu::~menu()

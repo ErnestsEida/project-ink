@@ -13,12 +13,16 @@ class Options : public QDialog
 
 public:
     explicit Options(QWidget *parent = nullptr);
+    void InitOptions();
+    QHash<QString, QHash<QString, QString>> SaveOptions();
     ~Options();
 
 private slots:
     void on_closeButton_clicked();
 
     void on_saveButton_clicked();
+
+    void on_toolButton_clicked();
 
 private:
     Ui::Options *ui;

@@ -17,6 +17,9 @@ public:
     explicit Editor(QWidget *parent = nullptr, QString path = "/home");
     ~Editor();
 
+private slots:
+    void on_actionOptions_triggered();
+
 private:
     Ui::Editor *ui;
     Options *options;

@@ -2,7 +2,7 @@ QT       += core gui widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
+CONFIG += c++11 console
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -15,6 +15,7 @@ SOURCES += \
     menu.cpp \
     newimage.cpp \
     options.cpp \
+    optionsmanager.cpp \
     templates.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     menu.h \
     newimage.h \
     options.h \
+    optionsmanager.h \
     templates.h
 
 FORMS += \
