@@ -3,6 +3,8 @@
 #include "menu.h"
 #include "cmath"
 
+QString cMeasurment;
+
 NewImage::NewImage(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::NewImage)
@@ -12,9 +14,28 @@ NewImage::NewImage(QWidget *parent) :
     this->setMaximumSize(this->width(), maximumHeight());
     this->setWindowTitle("Ink - New Image");
 
+    OptionsManager *manager = new OptionsManager();
+    QHash<QString, QString> options = manager->GetOptions()["newimage"];
+    delete manager;
+
     // SET DEFAULT VALUES FOR RADIO GROUPS
-    ui->pixels->setChecked(true);
-    ui->RGB->setChecked(true);
+    QRadioButton *holder;
+    foreach(holder, ui->measurements->findChildren<QRadioButton*>())
+    {
+        if (holder->objectName() == options["measurments"])
+        {
+            holder->setChecked(true);
+            cMeasurment = holder->objectName();
+        }
+    }
+
+    foreach(holder, ui->ColorScheme->findChildren<QRadioButton*>())
+    {
+        if (holder->objectName() == options["colorScheme"])
+        {
+            holder->setChecked(true);
+        }
+    }
 }
 
 NewImage::~NewImage()
@@ -66,15 +87,19 @@ QHash<QString, int> GetMargins(QString measurment)
     return margins;
 }
 
-int InchToPix(int inch)
-{
-    return inch * 96;
-}
+void NewImage::setWidthInput(int val){ ui->widthInput->setValue(val); }
 
-int CmToPix(int cm)
-{
-    return floor(cm * 37.79527);
-}
+void NewImage::setHeightInput(int val){ ui->heightInput->setValue(val); }
+
+// TO PIX
+int InchToPix(int inch){ return inch * 96; }
+int CmToPix(int cm){ return round(cm * 37.79527); }
+// TO CM
+int PixToCm(int px){ return round(px/37.79527); }
+int InchToCm(int inch){ return round(inch * 2.5); }
+// TO INCH
+int CmToInch(int cm){ return round(cm / 2.5); }
+int PixToInch(int px){ return round(px / 96); }
 
 // ===============================================
 
@@ -136,3 +161,52 @@ void NewImage::on_pushButton_3_clicked() // Template Button
     connect(wTemplate, &templates::sendTemplate, this, &NewImage::recieveTemplate);
     wTemplate->exec();
 }
+
+void NewImage::on_pixels_clicked() // PIXELS TRIGGER
+{
+    if (cMeasurment == "centimeters")
+    {
+        setHeightInput(CmToPix(ui->heightInput->value()));
+        setWidthInput(CmToPix(ui->widthInput->value()));
+        cMeasurment = "pixels";
+    }
+    else if (cMeasurment == "inches")
+    {
+        setHeightInput(InchToPix(ui->heightInput->value()));
+        setWidthInput(InchToPix(ui->widthInput->value()));
+        cMeasurment = "pixels";
+    }
+}
+
+void NewImage::on_centimeters_clicked() // Centimeter TRIGGERS
+{
+    if (cMeasurment == "pixels")
+    {
+        setHeightInput(PixToCm(ui->heightInput->value()));
+        setWidthInput(PixToCm(ui->widthInput->value()));
+        cMeasurment = "centimeters";
+    }
+    else if (cMeasurment == "inches")
+    {
+        setHeightInput(InchToCm(ui->heightInput->value()));
+        setWidthInput(InchToCm(ui->widthInput->value()));
+        cMeasurment = "centimeters";
+    }
+}
+
+void NewImage::on_inches_clicked() // Inch TRIGGER
+{
+    if (cMeasurment == "centimeters")
+    {
+        setHeightInput(CmToInch(ui->heightInput->value()));
+        setWidthInput(CmToInch(ui->widthInput->value()));
+        cMeasurment = "inches";
+    }
+    else if (cMeasurment == "pixels")
+    {
+        setHeightInput(PixToInch(ui->heightInput->value()));
+        setWidthInput(PixToInch(ui->widthInput->value()));
+        cMeasurment = "inches";
+    }
+}
+

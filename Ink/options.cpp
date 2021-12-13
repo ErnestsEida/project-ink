@@ -21,8 +21,6 @@ void Options::InitOptions()
     attrs = options.value("newimage");
     index = ui->newImageScheme->findText(attrs["colorScheme"]);
     ui->newImageScheme->setCurrentIndex(index);
-    index = ui->templates->findText(attrs["template"]);
-    ui->templates->setCurrentIndex(index);
     index = ui->measurments->findText(attrs["measurments"]);
     ui->measurments->setCurrentIndex(index);
 }
@@ -42,7 +40,6 @@ QHash<QString, QHash<QString, QString>> Options::SaveOptions()
     attributes = new QHash<QString, QString>;
     attributes->insert("colorScheme", ui->newImageScheme->currentText());
     attributes->insert("measurments", ui->measurments->currentText());
-    attributes->insert("template", ui->templates->currentText());
     options.insert("newimage", *attributes);
 
     return options;
