@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "options.h"
+#include <QPainter>
+#include "scribblearea.h"
 
 namespace Ui {
 class Editor;
@@ -17,12 +19,15 @@ public:
     explicit Editor(QWidget *parent = nullptr, QString path = "/home");
     ~Editor();
 
+    void setup();
+
 private slots:
     void on_actionOptions_triggered();
 
 private:
     Ui::Editor *ui;
     Options *options;
+    ScribbleArea *drawarea;
 };
 
 #endif // EDITOR_H
