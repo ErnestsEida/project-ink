@@ -16,7 +16,9 @@ SOURCES += \
     newimage.cpp \
     options.cpp \
     optionsmanager.cpp \
-    templates.cpp
+    scribblearea.cpp \
+    templates.cpp \
+    tools.cpp
 
 HEADERS += \
     editor.h \
@@ -25,7 +27,9 @@ HEADERS += \
     newimage.h \
     options.h \
     optionsmanager.h \
-    templates.h
+    scribblearea.h \
+    templates.h \
+    tools.h
 
 FORMS += \
     editor.ui \
@@ -33,7 +37,8 @@ FORMS += \
     menu.ui \
     newimage.ui \
     options.ui \
-    templates.ui
+    templates.ui \
+    tools.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
