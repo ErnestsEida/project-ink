@@ -76,7 +76,7 @@
         <x>0</x>
         <y>0</y>
         <width>326</width>
-        <height>522</height>
+        <height>517</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
@@ -195,6 +195,61 @@
               <string>centimeters</string>
              </property>
             </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox">
+         <property name="title">
+          <string>Saving</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="1" column="0">
+           <widget class="QComboBox" name="savingFormat">
+            <item>
+             <property name="text">
+              <string>png</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>jpeg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>jpg</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>ppm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>xbm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>xpm</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>bmp</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Format</string>
+            </property>
            </widget>
           </item>
          </layout>

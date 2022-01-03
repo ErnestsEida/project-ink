@@ -23,12 +23,12 @@ bool ScribbleArea::openImage(const QString &fileName)
     return true;
 }
 
-bool ScribbleArea::saveImage(const QString &fileName, const char *fileFormat)
+bool ScribbleArea::saveImage(const QString &fileName)
 {
+    qDebug() << fileName;
     QImage visibleImage = image;
-    resizeImage(&visibleImage, size());
 
-    if (visibleImage.save(fileName, fileFormat)) {
+    if (visibleImage.save(fileName)) {
         modified = false;
         return true;
     } else {

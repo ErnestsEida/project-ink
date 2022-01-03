@@ -17,7 +17,7 @@ struct Attribute{
 class OptionsManager
 {
 public:
-    QStringList categories = {"import", "newimage", "global"};
+    QStringList categories = {"import", "newimage", "saving"};
     OptionsManager();
     bool CreateOptionFiles();
     QHash<QString, QHash<QString, QString>> GetOptions();

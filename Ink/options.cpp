@@ -23,6 +23,11 @@ void Options::InitOptions()
     ui->newImageScheme->setCurrentIndex(index);
     index = ui->measurments->findText(attrs["measurments"]);
     ui->measurments->setCurrentIndex(index);
+
+    // SAVING
+    attrs = options.value("saving");
+    index = ui->savingFormat->findText(attrs["format"]);
+    ui->savingFormat->setCurrentIndex(index);
 }
 
 QHash<QString, QHash<QString, QString>> Options::SaveOptions()
@@ -42,6 +47,12 @@ QHash<QString, QHash<QString, QString>> Options::SaveOptions()
     attributes->insert("measurments", ui->measurments->currentText());
     options.insert("newimage", *attributes);
 
+    // SAVING
+    attributes = new QHash<QString, QString>;
+    attributes->insert("format", ui->savingFormat->currentText());
+    options.insert("saving", *attributes);
+
+    delete attributes;
     return options;
 }
 // =====================

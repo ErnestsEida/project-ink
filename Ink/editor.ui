@@ -124,7 +124,21 @@
     <property name="title">
      <string>Image</string>
     </property>
+    <widget class="QMenu" name="menuSave_as">
+     <property name="title">
+      <string>Save as...</string>
+     </property>
+     <addaction name="actionPNG"/>
+     <addaction name="actionJPEG"/>
+     <addaction name="actionJPG"/>
+     <addaction name="actionPPM"/>
+     <addaction name="actionXBM"/>
+     <addaction name="actionXPM"/>
+     <addaction name="actionBMP"/>
+    </widget>
     <addaction name="actionClear_screen"/>
+    <addaction name="actionSave"/>
+    <addaction name="menuSave_as"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuPreferences"/>
@@ -141,6 +155,49 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+R</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionPNG">
+   <property name="text">
+    <string>PNG</string>
+   </property>
+  </action>
+  <action name="actionJPEG">
+   <property name="text">
+    <string>JPEG</string>
+   </property>
+  </action>
+  <action name="actionJPG">
+   <property name="text">
+    <string>JPG</string>
+   </property>
+  </action>
+  <action name="actionPPM">
+   <property name="text">
+    <string>PPM</string>
+   </property>
+  </action>
+  <action name="actionXBM">
+   <property name="text">
+    <string>XBM</string>
+   </property>
+  </action>
+  <action name="actionXPM">
+   <property name="text">
+    <string>XPM</string>
+   </property>
+  </action>
+  <action name="actionBMP">
+   <property name="text">
+    <string>BMP</string>
    </property>
   </action>
  </widget>

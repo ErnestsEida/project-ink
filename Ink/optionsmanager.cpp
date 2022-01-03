@@ -15,7 +15,9 @@ bool OptionsManager::CreateOptionFiles()
         s << "~newimage" << "\n";
         s << "colorScheme:RGB" << "\n";
         s << "template:none" << "\n";
-        s << "measurments:pixels";
+        s << "measurments:pixels" << "\n";
+        s << "~saving" << "\n";
+        s << "format:png";
         file.close();
         return true;
     } else {
