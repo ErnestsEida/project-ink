@@ -64,6 +64,7 @@ void NewImage::recieveTemplate(int width, int height, QString colorScheme, QStri
             x->setChecked(true);
         }
     }
+    cMeasurment = measurments;
 }
 
 QHash<QString, int> GetMargins(QString measurment)
@@ -96,9 +97,9 @@ int InchToPix(int inch){ return inch * 96; }
 int CmToPix(int cm){ return round(cm * 37.79527); }
 // TO CM
 int PixToCm(int px){ return round(px/37.79527); }
-int InchToCm(int inch){ return round(inch * 2.5); }
+int InchToCm(int inch){ return round(inch * 2.54); }
 // TO INCH
-int CmToInch(int cm){ return round(cm / 2.5); }
+int CmToInch(int cm){ return round(cm / 2.54); }
 int PixToInch(int px){ return round(px / 96); }
 
 // ===============================================

@@ -24,6 +24,12 @@ public:
 private slots:
     void on_actionOptions_triggered();
 
+    void on_actionClear_screen_triggered();
+
+    void on_penWidthSlider_valueChanged(int value);
+
+    void on_colorWheelButton_clicked();
+
 private:
     Ui::Editor *ui;
     Options *options;

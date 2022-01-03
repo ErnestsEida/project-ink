@@ -27,7 +27,7 @@ ImageImport::~ImageImport()
 bool ContainsImage(QString string)
 {
     bool hasImage = false;
-    QStringList imageFormats = {".png", ".jpeg" ".jpg", ".ppm", ".xbm", ".xpm", ".bmp", ".gif"};
+    QStringList imageFormats = {".png", ".jpeg", ".jpg", ".ppm", ".xbm", ".xpm", ".bmp", ".gif"};
     foreach(QString format, imageFormats)
     {
         if(string.contains(format))
@@ -50,7 +50,7 @@ void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
     qDebug() << ContainsImage(path);
     if(ContainsImage(path))
     {
-        editor = new Editor(this, path);
+        editor = new Editor(NULL, path);
         editor->show();
         this->close();
         ui->errorLabel->setText("Please select an image!");
