@@ -19,6 +19,7 @@ bool ScribbleArea::openImage(const QString &fileName)
     QSize newSize = loadedImage.size().expandedTo(size());
     resizeImage(&loadedImage, newSize);
     image = loadedImage;
+    undoStack.append(image);
     modified = false;
     update();
     return true;
@@ -135,7 +136,7 @@ void ScribbleArea::resizeImage(QImage *image, const QSize &newSize)
 
 void ScribbleArea::undo()
 {
-    if (undoStack.length() > 0)
+    if (undoStack.length() > 1)
     {
         undoStack.removeLast();
         openImage(undoStack.last());
