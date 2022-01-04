@@ -150,3 +150,9 @@ void Editor::on_actionSave_triggered()
     }
 }
 
+
+void Editor::on_actionUndo_triggered()
+{
+    drawarea->undo();
+}
+

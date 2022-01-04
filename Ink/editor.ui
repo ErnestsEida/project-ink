@@ -139,6 +139,7 @@
     <addaction name="actionClear_screen"/>
     <addaction name="actionSave"/>
     <addaction name="menuSave_as"/>
+    <addaction name="actionUndo"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuPreferences"/>
@@ -198,6 +199,14 @@
   <action name="actionBMP">
    <property name="text">
     <string>BMP</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
    </property>
   </action>
  </widget>

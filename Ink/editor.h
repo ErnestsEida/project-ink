@@ -47,6 +47,8 @@ private slots:
 
     void on_actionSave_triggered();
 
+    void on_actionUndo_triggered();
+
 private:
     Ui::Editor *ui;
     Options *options;

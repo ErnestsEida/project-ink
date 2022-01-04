@@ -6,7 +6,8 @@ ScribbleArea::ScribbleArea(QWidget *parent) : QWidget(parent)
     modified = false;
     scribbling = false;
     myPenWidth = 1;
-    myPenColor = Qt::blue;
+    myPenColor = Qt::black;
+    undoStack.append(image);
 }
 
 bool ScribbleArea::openImage(const QString &fileName)
@@ -23,9 +24,20 @@ bool ScribbleArea::openImage(const QString &fileName)
     return true;
 }
 
+bool ScribbleArea::openImage(QImage xImage)
+{
+    QImage loadedImage = xImage;
+
+    QSize newSize = loadedImage.size().expandedTo(size());
+    resizeImage(&loadedImage, newSize);
+    image = loadedImage;
+    modified = false;
+    update();
+    return true;
+}
+
 bool ScribbleArea::saveImage(const QString &fileName)
 {
-    qDebug() << fileName;
     QImage visibleImage = image;
 
     if (visibleImage.save(fileName)) {
@@ -48,6 +60,7 @@ void ScribbleArea::setPenWidth(int newWidth)
 
 void ScribbleArea::clearImage()
 {
+    undoStack.append(image);
     image.fill(qRgb(255, 255, 255));
     modified = true;
     update();
@@ -73,6 +86,7 @@ void ScribbleArea::mouseReleaseEvent(QMouseEvent *event)
         drawLineTo(event->pos());
         scribbling = false;
     }
+    undoStack.append(image);
 }
 
 void ScribbleArea::paintEvent(QPaintEvent *event)
@@ -117,4 +131,13 @@ void ScribbleArea::resizeImage(QImage *image, const QSize &newSize)
     QPainter painter(&newImage);
     painter.drawImage(QPoint(0, 0), *image);
     *image = newImage;
+}
+
+void ScribbleArea::undo()
+{
+    if (undoStack.length() > 0)
+    {
+        undoStack.removeLast();
+        openImage(undoStack.last());
+    }
 }

@@ -13,6 +13,7 @@ public:
     ScribbleArea(QWidget *parent = 0);
 
     bool openImage(const QString &fileName);
+    bool openImage(QImage);
     bool saveImage(const QString &fileName);
     void setPenColor(const QColor &newColor);
     void setPenWidth(int newWidth);
@@ -20,6 +21,7 @@ public:
     bool isModified() const { return modified; }
     QColor penColor() const { return myPenColor; }
     int penWidth() const { return myPenWidth; }
+    void undo();
 
 public slots:
     void clearImage();
@@ -35,6 +37,7 @@ private:
     void drawLineTo(const QPoint &endPoint);
     void resizeImage(QImage *image, const QSize &newSize);
 
+    QList<QImage> undoStack;
     bool modified;
     bool scribbling;
     int myPenWidth;
