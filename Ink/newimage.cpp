@@ -137,7 +137,7 @@ void NewImage::on_pushButton_clicked() // Create Button
     // CHECK FOR MARGINS
     if (height > margins["max"] || width > margins["max"] || height < margins["min"] || height < margins["mix"])
     {
-        ui->ErrorLabel->setText("Overstepped values on width/height input!");
+        QMessageBox::critical(this, "Error - faulty input", "Incorrect input data values on height or width");
     }
     else
     {

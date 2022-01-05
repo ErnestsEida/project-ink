@@ -6,6 +6,7 @@
 #include <QPainter>
 #include "scribblearea.h"
 #include "optionsmanager.h"
+#include <QCloseEvent>
 
 namespace Ui {
 class Editor;
@@ -20,6 +21,7 @@ public:
     explicit Editor(QWidget *parent = nullptr, QString path = "/home");
     ~Editor();
     QString SaveFileAs(QString);
+    void closeEvent(QCloseEvent *event);
     void setup();
 
 private slots:
@@ -48,6 +50,8 @@ private slots:
     void on_actionSave_triggered();
 
     void on_actionUndo_triggered();
+
+    void on_actionChange_Size_triggered();
 
 private:
     Ui::Editor *ui;

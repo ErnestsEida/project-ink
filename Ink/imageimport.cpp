@@ -57,7 +57,7 @@ void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
     }
     else
     {
-        ui->errorLabel->setText("Please select an image!");
+        QMessageBox::critical(this, "Error - faulty input", "Provided file isn't supported by program, or file is not specified!");
     }
 }
 

@@ -20,7 +20,7 @@ Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : //
     drawarea = new ScribbleArea;
     drawarea->setMaximumSize(width, height);
     drawarea->setMinimumSize(width, height);
-
+    drawarea->resize(width, height);
     QScrollArea *sa = ui->scrollArea;
     sa->setWidgetResizable(true);
     sa->setWidget(drawarea);
@@ -38,9 +38,10 @@ Editor::Editor(QWidget *parent, QString path) : // EDITOR CONSTRUCTOR WITH PATH
     QImage *img = new QImage(path);
 
     drawarea = new ScribbleArea;
-    drawarea->openImage(path);
+    drawarea->openImage(*img);
     drawarea->setMaximumSize(img->width(), img->height());
     drawarea->setMinimumSize(img->width(), img->height());
+    drawarea->resize(img->width(), img->height());
     QScrollArea *sa = ui->scrollArea;
     sa->setWidgetResizable(true);
     sa->setWidget(drawarea);
@@ -50,6 +51,26 @@ Editor::Editor(QWidget *parent, QString path) : // EDITOR CONSTRUCTOR WITH PATH
     setup();
 
     delete img;
+}
+
+void Editor::closeEvent(QCloseEvent *event)
+{
+    if (imagePath == "")
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Image has been modified.");
+        msgBox.setInformativeText("Do you want to save this image?");
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);
+        msgBox.setDefaultButton(QMessageBox::Save);
+        int status = msgBox.exec();
+        if (status == QMessageBox::Save)
+        {
+            OptionsManager *manager = new OptionsManager;
+            QHash<QString, QString> options = manager->GetOptions()["saving"];
+            SaveFileAs(options["format"]);
+            delete manager;
+        }
+    }
 }
 
 Editor::~Editor()
@@ -154,5 +175,13 @@ void Editor::on_actionSave_triggered()
 void Editor::on_actionUndo_triggered()
 {
     drawarea->undo();
+}
+
+
+void Editor::on_actionChange_Size_triggered()
+{
+    QSize currentImage = drawarea->image.size();
+    qDebug() << QInputDialog::getInt(this,"New width", "Width:", currentImage.width(), 0, 4096);
+    qDebug() << QInputDialog::getInt(this,"New height", "Height:", currentImage.height(), 0, 4096);
 }
 

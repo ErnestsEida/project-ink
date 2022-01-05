@@ -12,6 +12,8 @@ class ScribbleArea : public QWidget
 public:
     ScribbleArea(QWidget *parent = 0);
 
+    QImage image;
+
     bool openImage(const QString &fileName);
     bool openImage(QImage);
     bool saveImage(const QString &fileName);
@@ -42,7 +44,6 @@ private:
     bool scribbling;
     int myPenWidth;
     QColor myPenColor;
-    QImage image;
     QPoint lastPoint;
 };
 

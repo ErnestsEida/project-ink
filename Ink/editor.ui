@@ -140,6 +140,7 @@
     <addaction name="actionSave"/>
     <addaction name="menuSave_as"/>
     <addaction name="actionUndo"/>
+    <addaction name="actionChange_Size"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuPreferences"/>
@@ -207,6 +208,11 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+Z</string>
+   </property>
+  </action>
+  <action name="actionChange_Size">
+   <property name="text">
+    <string>Change Size</string>
    </property>
   </action>
  </widget>
