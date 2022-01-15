@@ -1,14 +1,19 @@
 #include "editor.h"
 #include "ui_editor.h"
+#include "colorbutton.h"
 #include <QtWidgets>
+#include <QtGlobal>
 
 QString imagePath;
+QString imageColorScheme;
 
 void Editor::setup()
 {
     this->setWindowTitle("Ink - Editor");
     ui->colorWheelButton->setStyleSheet("background-color: " + drawarea->penColor().name());
     on_penWidthSlider_valueChanged(4);
+    UpdateColorPalette();
+    srand(time(0));
 }
 
 Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PARAMETERS
@@ -17,6 +22,7 @@ Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : //
 {
     ui->setupUi(this);
 
+    imageColorScheme = colorScheme;
     drawarea = new ScribbleArea;
     drawarea->setMaximumSize(width, height);
     drawarea->setMinimumSize(width, height);
@@ -30,11 +36,12 @@ Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : //
     setup();
 }
 
-Editor::Editor(QWidget *parent, QString path) : // EDITOR CONSTRUCTOR WITH PATH
+Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PATH
     QMainWindow(parent),
     ui(new Ui::Editor)
 {
     ui->setupUi(this);
+    imageColorScheme = colorScheme;
     QImage *img = new QImage(path);
 
     drawarea = new ScribbleArea;
@@ -76,6 +83,73 @@ void Editor::closeEvent(QCloseEvent *event)
 Editor::~Editor()
 {
     delete ui;
+}
+
+void Editor::UpdateColorPalette()
+{
+    QGroupBox *colorPalette = ui->colorPalette;
+    QGridLayout *grid = new QGridLayout(colorPalette);
+    ColorButton *newButton;
+    QColor *color;
+
+    if (colorPalette->children().count() > 0)
+    {
+        qDebug() << colorPalette->children().count();
+    }
+    else{
+
+    if (imageColorScheme == "RGB")
+    {
+        ui->colorWheelButton->show();
+        int row = 0;
+        int col = 0;
+        for(int i = 0;i < 60;i++)
+        {
+            color = new QColor(rand()%255, rand()%255, rand()%255);
+            newButton = new ColorButton();
+            newButton->color_ = color;
+            newButton->setStyleSheet("background-color: " + color->name());
+            connect(newButton, &ColorButton::buttonClicked, this, &Editor::changeColor);
+            grid->addWidget(newButton, row, col);
+
+            if (col == 4)
+            {
+                col = 0;
+                row++;
+            }
+            else
+            {
+                col++;
+            }
+        }
+    } else if (imageColorScheme == "Greyscale") {
+        ui->colorWheelButton->hide();
+        int row = 0;
+        int amount;
+
+        for(int i = 0; i < 6; i++)
+        {
+            amount = (40 * i);
+            color = new QColor(amount, amount, amount);
+            newButton = new ColorButton();
+            newButton->color_ = color;
+            newButton->setStyleSheet("background-color: " + color->name());
+            connect(newButton, &ColorButton::buttonClicked, this, &Editor::changeColor);
+            grid->addWidget(newButton, row, 0);
+            row++;
+        }
+    } else {
+        color = new QColor(0,0,0);
+        drawarea->setPenColor(*color);
+        ui->colorWheelButton->hide();
+    }
+    }
+}
+
+void Editor::changeColor(QColor color)
+{
+    drawarea->setPenColor(color);
+    ui->colorWheelButton->setStyleSheet("background-color: " + color.name());
 }
 
 void Editor::on_actionOptions_triggered() // Options
@@ -183,5 +257,26 @@ void Editor::on_actionChange_Size_triggered()
     QSize currentImage = drawarea->image.size();
     qDebug() << QInputDialog::getInt(this,"New width", "Width:", currentImage.width(), 0, 4096);
     qDebug() << QInputDialog::getInt(this,"New height", "Height:", currentImage.height(), 0, 4096);
+}
+
+
+void Editor::on_actionRGB_triggered()
+{
+    imageColorScheme = "RGB";
+    UpdateColorPalette();
+}
+
+
+void Editor::on_actionGreyscale_triggered()
+{
+    imageColorScheme = "Greyscale";
+    UpdateColorPalette();
+}
+
+
+void Editor::on_actionInverse_triggered()
+{
+    imageColorScheme = "Inverse";
+    UpdateColorPalette();
 }
 

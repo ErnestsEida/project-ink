@@ -63,7 +63,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="6" column="0" colspan="4">
-        <widget class="QGroupBox" name="groupBox_2">
+        <widget class="QGroupBox" name="colorPalette">
          <property name="title">
           <string>Colors</string>
          </property>
@@ -86,17 +86,17 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Pen width</string>
-         </property>
-        </widget>
-       </item>
        <item row="5" column="0" colspan="4">
         <widget class="QPushButton" name="colorWheelButton">
          <property name="text">
           <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Pen width</string>
          </property>
         </widget>
        </item>

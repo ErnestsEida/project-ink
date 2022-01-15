@@ -18,13 +18,16 @@ class Editor : public QMainWindow
 
 public:
     explicit Editor(QWidget *parent = nullptr, int width = 1920, int height = 1080, QString colorScheme = "RGB");
-    explicit Editor(QWidget *parent = nullptr, QString path = "/home");
+    explicit Editor(QWidget *parent = nullptr, QString path = "/home", QString colorScheme = "RGB");
     ~Editor();
     QString SaveFileAs(QString);
     void closeEvent(QCloseEvent *event);
     void setup();
+    void UpdateColorPalette();
 
 private slots:
+    void changeColor(QColor);
+
     void on_actionOptions_triggered();
 
     void on_actionClear_screen_triggered();
@@ -52,6 +55,8 @@ private slots:
     void on_actionUndo_triggered();
 
     void on_actionChange_Size_triggered();
+
+
 
 private:
     Ui::Editor *ui;
