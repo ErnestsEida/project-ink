@@ -58,6 +58,12 @@ private slots:
 
 
 
+    void on_actionRGB_triggered();
+
+    void on_actionGreyscale_triggered();
+
+    void on_actionInverse_triggered();
+
 private:
     Ui::Editor *ui;
     Options *options;

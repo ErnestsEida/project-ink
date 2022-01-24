@@ -7,7 +7,7 @@ class ColorButton : public QPushButton
 {
     Q_OBJECT
 public:
-    ColorButton();
+    ColorButton(QWidget *parent = nullptr);
     QColor *color_;
 
 signals:

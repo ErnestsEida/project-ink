@@ -67,6 +67,7 @@
          <property name="title">
           <string>Colors</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_3"/>
         </widget>
        </item>
        <item row="3" column="3">
@@ -136,11 +137,20 @@
      <addaction name="actionXPM"/>
      <addaction name="actionBMP"/>
     </widget>
+    <widget class="QMenu" name="menuChange_Color_Scheme">
+     <property name="title">
+      <string>Change Color Scheme</string>
+     </property>
+     <addaction name="actionRGB"/>
+     <addaction name="actionGreyscale"/>
+     <addaction name="actionInverse"/>
+    </widget>
     <addaction name="actionClear_screen"/>
     <addaction name="actionSave"/>
     <addaction name="menuSave_as"/>
     <addaction name="actionUndo"/>
     <addaction name="actionChange_Size"/>
+    <addaction name="menuChange_Color_Scheme"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuPreferences"/>
@@ -213,6 +223,21 @@
   <action name="actionChange_Size">
    <property name="text">
     <string>Change Size</string>
+   </property>
+  </action>
+  <action name="actionRGB">
+   <property name="text">
+    <string>RGB</string>
+   </property>
+  </action>
+  <action name="actionGreyscale">
+   <property name="text">
+    <string>Greyscale</string>
+   </property>
+  </action>
+  <action name="actionInverse">
+   <property name="text">
+    <string>Inverse</string>
    </property>
   </action>
  </widget>

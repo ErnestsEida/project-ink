@@ -88,15 +88,14 @@ Editor::~Editor()
 void Editor::UpdateColorPalette()
 {
     QGroupBox *colorPalette = ui->colorPalette;
-    QGridLayout *grid = new QGridLayout(colorPalette);
+    QGridLayout *grid = dynamic_cast<QGridLayout*>(colorPalette->layout());
     ColorButton *newButton;
     QColor *color;
 
-    if (colorPalette->children().count() > 0)
+    while(QPushButton *x = colorPalette->findChild<QPushButton*>())
     {
-        qDebug() << colorPalette->children().count();
+        delete x;
     }
-    else{
 
     if (imageColorScheme == "RGB")
     {
@@ -142,7 +141,6 @@ void Editor::UpdateColorPalette()
         color = new QColor(0,0,0);
         drawarea->setPenColor(*color);
         ui->colorWheelButton->hide();
-    }
     }
 }
 
