@@ -6,6 +6,7 @@
 #include <QPainter>
 #include "scribblearea.h"
 #include "optionsmanager.h"
+#include "quiplashdialog.h"
 #include <QCloseEvent>
 
 namespace Ui {
@@ -64,10 +65,18 @@ private slots:
 
     void on_actionInverse_triggered();
 
+    void on_actionDo_quiplash_with_triggered();
+
+    void on_actionELK_triggered();
+
+public slots:
+    void QuiplashCollect(QString imagePath);
+
 private:
     Ui::Editor *ui;
     Options *options;
     ScribbleArea *drawarea;
+    QuiplashDialog *qDialog;
 };
 
 #endif // EDITOR_H

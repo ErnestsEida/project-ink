@@ -45,6 +45,9 @@ public:
     QAction *actionRGB;
     QAction *actionGreyscale;
     QAction *actionInverse;
+    QAction *actionDo_quiplash_with;
+    QAction *actionAbout_quiplash;
+    QAction *actionELK;
     QWidget *container;
     QGridLayout *gridLayout;
     QScrollArea *scrollArea;
@@ -62,6 +65,7 @@ public:
     QMenu *menuImage;
     QMenu *menuSave_as;
     QMenu *menuChange_Color_Scheme;
+    QMenu *menuQuiplash;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *Editor)
@@ -100,6 +104,12 @@ public:
         actionGreyscale->setObjectName(QString::fromUtf8("actionGreyscale"));
         actionInverse = new QAction(Editor);
         actionInverse->setObjectName(QString::fromUtf8("actionInverse"));
+        actionDo_quiplash_with = new QAction(Editor);
+        actionDo_quiplash_with->setObjectName(QString::fromUtf8("actionDo_quiplash_with"));
+        actionAbout_quiplash = new QAction(Editor);
+        actionAbout_quiplash->setObjectName(QString::fromUtf8("actionAbout_quiplash"));
+        actionELK = new QAction(Editor);
+        actionELK->setObjectName(QString::fromUtf8("actionELK"));
         container = new QWidget(Editor);
         container->setObjectName(QString::fromUtf8("container"));
         container->setMinimumSize(QSize(320, 180));
@@ -166,6 +176,8 @@ public:
         menuSave_as->setObjectName(QString::fromUtf8("menuSave_as"));
         menuChange_Color_Scheme = new QMenu(menuImage);
         menuChange_Color_Scheme->setObjectName(QString::fromUtf8("menuChange_Color_Scheme"));
+        menuQuiplash = new QMenu(menuImage);
+        menuQuiplash->setObjectName(QString::fromUtf8("menuQuiplash"));
         Editor->setMenuBar(menubar);
         statusbar = new QStatusBar(Editor);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -180,6 +192,7 @@ public:
         menuImage->addAction(actionUndo);
         menuImage->addAction(actionChange_Size);
         menuImage->addAction(menuChange_Color_Scheme->menuAction());
+        menuImage->addAction(menuQuiplash->menuAction());
         menuSave_as->addAction(actionPNG);
         menuSave_as->addAction(actionJPEG);
         menuSave_as->addAction(actionJPG);
@@ -187,9 +200,12 @@ public:
         menuSave_as->addAction(actionXBM);
         menuSave_as->addAction(actionXPM);
         menuSave_as->addAction(actionBMP);
+        menuSave_as->addAction(actionELK);
         menuChange_Color_Scheme->addAction(actionRGB);
         menuChange_Color_Scheme->addAction(actionGreyscale);
         menuChange_Color_Scheme->addAction(actionInverse);
+        menuQuiplash->addAction(actionDo_quiplash_with);
+        menuQuiplash->addAction(actionAbout_quiplash);
 
         retranslateUi(Editor);
         QObject::connect(penWidthSlider, &QSlider::valueChanged, penWidth, &QSpinBox::setValue);
@@ -224,6 +240,9 @@ public:
         actionRGB->setText(QCoreApplication::translate("Editor", "RGB", nullptr));
         actionGreyscale->setText(QCoreApplication::translate("Editor", "Greyscale", nullptr));
         actionInverse->setText(QCoreApplication::translate("Editor", "Inverse", nullptr));
+        actionDo_quiplash_with->setText(QCoreApplication::translate("Editor", "Do quiplash with...", nullptr));
+        actionAbout_quiplash->setText(QCoreApplication::translate("Editor", "About quiplash", nullptr));
+        actionELK->setText(QCoreApplication::translate("Editor", "ELK", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Editor", "Tools", nullptr));
         colorPalette->setTitle(QCoreApplication::translate("Editor", "Colors", nullptr));
         colorWheelButton->setText(QString());
@@ -232,6 +251,7 @@ public:
         menuImage->setTitle(QCoreApplication::translate("Editor", "Image", nullptr));
         menuSave_as->setTitle(QCoreApplication::translate("Editor", "Save as...", nullptr));
         menuChange_Color_Scheme->setTitle(QCoreApplication::translate("Editor", "Change Color Scheme", nullptr));
+        menuQuiplash->setTitle(QCoreApplication::translate("Editor", "Quiplash", nullptr));
     } // retranslateUi
 
 };

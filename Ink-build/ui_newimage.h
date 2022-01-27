@@ -179,6 +179,16 @@ public:
 
         gridLayout->addWidget(label_3, 3, 1, 1, 1);
 
+        QWidget::setTabOrder(pixels, centimeters);
+        QWidget::setTabOrder(centimeters, inches);
+        QWidget::setTabOrder(inches, widthInput);
+        QWidget::setTabOrder(widthInput, heightInput);
+        QWidget::setTabOrder(heightInput, RGB);
+        QWidget::setTabOrder(RGB, Inverse);
+        QWidget::setTabOrder(Inverse, Greyscale);
+        QWidget::setTabOrder(Greyscale, pushButton_3);
+        QWidget::setTabOrder(pushButton_3, pushButton);
+        QWidget::setTabOrder(pushButton, pushButton_2);
 
         retranslateUi(NewImage);
 

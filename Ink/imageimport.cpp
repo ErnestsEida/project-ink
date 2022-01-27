@@ -27,7 +27,7 @@ ImageImport::~ImageImport()
 bool ContainsImage(QString string)
 {
     bool hasImage = false;
-    QStringList imageFormats = {".png", ".jpeg", ".jpg", ".ppm", ".xbm", ".xpm", ".bmp", ".gif"};
+    QStringList imageFormats = {".png", ".jpeg", ".jpg", ".ppm", ".xbm", ".xpm", ".bmp", ".gif", ".elk"};
     foreach(QString format, imageFormats)
     {
         if(string.contains(format))
@@ -47,13 +47,11 @@ void ImageImport::on_closeButton_clicked() // CLOSE BUTTON
 void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
 {
     QString path = ui->path->toPlainText();
-    qDebug() << ContainsImage(path);
     if(ContainsImage(path))
     {
         editor = new Editor(NULL, path);
         editor->show();
         this->close();
-        ui->errorLabel->setText("Please select an image!");
     }
     else
     {
@@ -64,7 +62,7 @@ void ImageImport::on_acceptButton_clicked() // IMPORT BUTTON
 
 void ImageImport::on_toolButton_clicked() // PATH CHOICE BUTTON
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open Image", import_path, "Images (*.png *.jpeg *.jpg *.ppm *.xbm *.xpm *.bmp *.gif)");
+    QString fileName = QFileDialog::getOpenFileName(this, "Open Image", import_path, "Images (*.png *.jpeg *.jpg *.ppm *.xbm *.xpm *.bmp *.gif *.elk)");
     if (fileName.isEmpty())
     {
         ui->path->setText(import_path);

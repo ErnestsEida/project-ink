@@ -1,6 +1,7 @@
 #include "editor.h"
 #include "ui_editor.h"
 #include "colorbutton.h"
+#include "quiplashmodule.h"
 #include <QtWidgets>
 #include <QtGlobal>
 
@@ -8,7 +9,7 @@ QString imagePath;
 QString imageColorScheme;
 
 void Editor::setup()
-{
+{   this->setWindowState(Qt::WindowMaximized);
     this->setWindowTitle("Ink - Editor");
     ui->colorWheelButton->setStyleSheet("background-color: " + drawarea->penColor().name());
     on_penWidthSlider_valueChanged(4);
@@ -21,7 +22,6 @@ Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : //
     ui(new Ui::Editor)
 {
     ui->setupUi(this);
-
     imageColorScheme = colorScheme;
     drawarea = new ScribbleArea;
     drawarea->setMaximumSize(width, height);
@@ -42,7 +42,13 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
 {
     ui->setupUi(this);
     imageColorScheme = colorScheme;
-    QImage *img = new QImage(path);
+    QImage *img;
+    if (path.contains(".elk"))
+    {
+        img = new QImage();
+    } else {
+        img = new QImage(path);
+    }
 
     drawarea = new ScribbleArea;
     drawarea->openImage(*img);
@@ -144,6 +150,12 @@ void Editor::UpdateColorPalette()
     }
 }
 
+void Editor::QuiplashCollect(QString imagePath)
+{
+    QImage secondImage(imagePath);
+    QuiplashModule module(this, drawarea->image, secondImage);
+}
+
 void Editor::changeColor(QColor color)
 {
     drawarea->setPenColor(color);
@@ -180,7 +192,30 @@ void Editor::on_colorWheelButton_clicked()
 QString Editor::SaveFileAs(QString format)
 {
     QString filename = QFileDialog::getSaveFileName(this, "Save file", "/home/"+ qgetenv("USER")+"/untitled."+format);
-    drawarea->saveImage(filename);
+    if (!filename.isEmpty())
+    {
+        if (format != "elk")
+        {
+            drawarea->saveImage(filename);
+        } else {
+            QImage img(drawarea->image);
+            QFile file(filename);
+            if (file.open(QIODevice::ReadWrite))
+            {
+                QTextStream s(&file);
+                s << img.size().width() << "x" << img.size().height() << "\n"; // Specify image dimensions
+                for(int i = 0;i < img.size().height();i++)
+                {
+                    s << "\n";
+                    for(int u = 0;u < img.size().width();u++)
+                    {
+                        s << img.pixelColor(u,i).name() << " ";
+                    }
+                }
+                file.close();
+            }
+        }
+    }
     return filename;
 }
 
@@ -225,6 +260,10 @@ void Editor::on_actionBMP_triggered()
     imagePath = SaveFileAs("bmp");
 }
 
+void Editor::on_actionELK_triggered()
+{
+    imagePath = SaveFileAs("elk");
+}
 
 void Editor::on_actionSave_triggered()
 {
@@ -278,3 +317,10 @@ void Editor::on_actionInverse_triggered()
     UpdateColorPalette();
 }
 
+
+void Editor::on_actionDo_quiplash_with_triggered()
+{
+    qDialog = new QuiplashDialog();
+    connect(qDialog, &QuiplashDialog::SendDataToQuiplash, this, &Editor::QuiplashCollect);
+    qDialog->exec();
+}

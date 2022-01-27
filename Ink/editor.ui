@@ -136,6 +136,7 @@
      <addaction name="actionXBM"/>
      <addaction name="actionXPM"/>
      <addaction name="actionBMP"/>
+     <addaction name="actionELK"/>
     </widget>
     <widget class="QMenu" name="menuChange_Color_Scheme">
      <property name="title">
@@ -145,12 +146,20 @@
      <addaction name="actionGreyscale"/>
      <addaction name="actionInverse"/>
     </widget>
+    <widget class="QMenu" name="menuQuiplash">
+     <property name="title">
+      <string>Quiplash</string>
+     </property>
+     <addaction name="actionDo_quiplash_with"/>
+     <addaction name="actionAbout_quiplash"/>
+    </widget>
     <addaction name="actionClear_screen"/>
     <addaction name="actionSave"/>
     <addaction name="menuSave_as"/>
     <addaction name="actionUndo"/>
     <addaction name="actionChange_Size"/>
     <addaction name="menuChange_Color_Scheme"/>
+    <addaction name="menuQuiplash"/>
    </widget>
    <addaction name="menuImage"/>
    <addaction name="menuPreferences"/>
@@ -238,6 +247,21 @@
   <action name="actionInverse">
    <property name="text">
     <string>Inverse</string>
+   </property>
+  </action>
+  <action name="actionDo_quiplash_with">
+   <property name="text">
+    <string>Do quiplash with...</string>
+   </property>
+  </action>
+  <action name="actionAbout_quiplash">
+   <property name="text">
+    <string>About quiplash</string>
+   </property>
+  </action>
+  <action name="actionELK">
+   <property name="text">
+    <string>ELK</string>
    </property>
   </action>
  </widget>

@@ -183,6 +183,7 @@ public:
         savingFormat->addItem(QString());
         savingFormat->addItem(QString());
         savingFormat->addItem(QString());
+        savingFormat->addItem(QString());
         savingFormat->setObjectName(QString::fromUtf8("savingFormat"));
 
         gridLayout_3->addWidget(savingFormat, 1, 0, 1, 1);
@@ -242,6 +243,7 @@ public:
         savingFormat->setItemText(4, QCoreApplication::translate("Options", "xbm", nullptr));
         savingFormat->setItemText(5, QCoreApplication::translate("Options", "xpm", nullptr));
         savingFormat->setItemText(6, QCoreApplication::translate("Options", "bmp", nullptr));
+        savingFormat->setItemText(7, QCoreApplication::translate("Options", "elk", nullptr));
 
         label_5->setText(QCoreApplication::translate("Options", "Format", nullptr));
     } // retranslateUi

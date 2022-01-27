@@ -219,6 +219,19 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>pixels</tabstop>
+  <tabstop>centimeters</tabstop>
+  <tabstop>inches</tabstop>
+  <tabstop>widthInput</tabstop>
+  <tabstop>heightInput</tabstop>
+  <tabstop>RGB</tabstop>
+  <tabstop>Inverse</tabstop>
+  <tabstop>Greyscale</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

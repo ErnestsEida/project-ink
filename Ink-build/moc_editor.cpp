@@ -24,8 +24,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Editor_t {
-    const uint offsetsAndSize[42];
-    char stringdata0[464];
+    const uint offsetsAndSize[50];
+    char stringdata0[549];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_Editor_t, stringdata0) + ofs), len 
@@ -51,7 +51,11 @@ QT_MOC_LITERAL(330, 23), // "on_actionUndo_triggered"
 QT_MOC_LITERAL(354, 30), // "on_actionChange_Size_triggered"
 QT_MOC_LITERAL(385, 22), // "on_actionRGB_triggered"
 QT_MOC_LITERAL(408, 28), // "on_actionGreyscale_triggered"
-QT_MOC_LITERAL(437, 26) // "on_actionInverse_triggered"
+QT_MOC_LITERAL(437, 26), // "on_actionInverse_triggered"
+QT_MOC_LITERAL(464, 35), // "on_actionDo_quiplash_with_tri..."
+QT_MOC_LITERAL(500, 22), // "on_actionELK_triggered"
+QT_MOC_LITERAL(523, 15), // "QuiplashCollect"
+QT_MOC_LITERAL(539, 9) // "imagePath"
 
     },
     "Editor\0changeColor\0\0on_actionOptions_triggered\0"
@@ -66,7 +70,10 @@ QT_MOC_LITERAL(437, 26) // "on_actionInverse_triggered"
     "on_actionChange_Size_triggered\0"
     "on_actionRGB_triggered\0"
     "on_actionGreyscale_triggered\0"
-    "on_actionInverse_triggered"
+    "on_actionInverse_triggered\0"
+    "on_actionDo_quiplash_with_triggered\0"
+    "on_actionELK_triggered\0QuiplashCollect\0"
+    "imagePath"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,7 +83,7 @@ static const uint qt_meta_data_Editor[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      21,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -84,24 +91,27 @@ static const uint qt_meta_data_Editor[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,  122,    2, 0x08,    1 /* Private */,
-       3,    0,  125,    2, 0x08,    3 /* Private */,
-       4,    0,  126,    2, 0x08,    4 /* Private */,
-       5,    1,  127,    2, 0x08,    5 /* Private */,
-       7,    0,  130,    2, 0x08,    7 /* Private */,
-       8,    0,  131,    2, 0x08,    8 /* Private */,
-       9,    0,  132,    2, 0x08,    9 /* Private */,
-      10,    0,  133,    2, 0x08,   10 /* Private */,
-      11,    0,  134,    2, 0x08,   11 /* Private */,
-      12,    0,  135,    2, 0x08,   12 /* Private */,
-      13,    0,  136,    2, 0x08,   13 /* Private */,
-      14,    0,  137,    2, 0x08,   14 /* Private */,
-      15,    0,  138,    2, 0x08,   15 /* Private */,
-      16,    0,  139,    2, 0x08,   16 /* Private */,
-      17,    0,  140,    2, 0x08,   17 /* Private */,
-      18,    0,  141,    2, 0x08,   18 /* Private */,
-      19,    0,  142,    2, 0x08,   19 /* Private */,
-      20,    0,  143,    2, 0x08,   20 /* Private */,
+       1,    1,  140,    2, 0x08,    1 /* Private */,
+       3,    0,  143,    2, 0x08,    3 /* Private */,
+       4,    0,  144,    2, 0x08,    4 /* Private */,
+       5,    1,  145,    2, 0x08,    5 /* Private */,
+       7,    0,  148,    2, 0x08,    7 /* Private */,
+       8,    0,  149,    2, 0x08,    8 /* Private */,
+       9,    0,  150,    2, 0x08,    9 /* Private */,
+      10,    0,  151,    2, 0x08,   10 /* Private */,
+      11,    0,  152,    2, 0x08,   11 /* Private */,
+      12,    0,  153,    2, 0x08,   12 /* Private */,
+      13,    0,  154,    2, 0x08,   13 /* Private */,
+      14,    0,  155,    2, 0x08,   14 /* Private */,
+      15,    0,  156,    2, 0x08,   15 /* Private */,
+      16,    0,  157,    2, 0x08,   16 /* Private */,
+      17,    0,  158,    2, 0x08,   17 /* Private */,
+      18,    0,  159,    2, 0x08,   18 /* Private */,
+      19,    0,  160,    2, 0x08,   19 /* Private */,
+      20,    0,  161,    2, 0x08,   20 /* Private */,
+      21,    0,  162,    2, 0x08,   21 /* Private */,
+      22,    0,  163,    2, 0x08,   22 /* Private */,
+      23,    1,  164,    2, 0x0a,   23 /* Public */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QColor,    2,
@@ -122,6 +132,9 @@ static const uint qt_meta_data_Editor[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   24,
 
        0        // eod
 };
@@ -150,6 +163,9 @@ void Editor::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 15: _t->on_actionRGB_triggered(); break;
         case 16: _t->on_actionGreyscale_triggered(); break;
         case 17: _t->on_actionInverse_triggered(); break;
+        case 18: _t->on_actionDo_quiplash_with_triggered(); break;
+        case 19: _t->on_actionELK_triggered(); break;
+        case 20: _t->QuiplashCollect((*reinterpret_cast< QString(*)>(_a[1]))); break;
         default: ;
         }
     }
@@ -163,7 +179,7 @@ const QMetaObject Editor::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_Editor_t
 , QtPrivate::TypeAndForceComplete<Editor, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QColor, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<int, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<QString, std::false_type>
 
 
 >,
@@ -190,13 +206,13 @@ int Editor::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 21)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 21;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 21)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 18;
+        _id -= 21;
     }
     return _id;
 }

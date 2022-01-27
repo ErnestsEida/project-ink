@@ -11,12 +11,15 @@ CONFIG += c++11 console
 SOURCES += \
     colorbutton.cpp \
     editor.cpp \
+    globals.cpp \
     imageimport.cpp \
     main.cpp \
     menu.cpp \
     newimage.cpp \
     options.cpp \
     optionsmanager.cpp \
+    quiplashdialog.cpp \
+    quiplashmodule.cpp \
     scribblearea.cpp \
     templates.cpp \
     tools.cpp
@@ -24,11 +27,14 @@ SOURCES += \
 HEADERS += \
     colorbutton.h \
     editor.h \
+    globals.h \
     imageimport.h \
     menu.h \
     newimage.h \
     options.h \
     optionsmanager.h \
+    quiplashdialog.h \
+    quiplashmodule.h \
     scribblearea.h \
     templates.h \
     tools.h
@@ -39,6 +45,7 @@ FORMS += \
     menu.ui \
     newimage.ui \
     options.ui \
+    quiplashdialog.ui \
     templates.ui \
     tools.ui
 
