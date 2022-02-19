@@ -2,6 +2,7 @@
 #include "ui_editor.h"
 #include "colorbutton.h"
 #include "quiplashmodule.h"
+#include "elkfile.h"
 #include <QtWidgets>
 #include <QtGlobal>
 
@@ -45,7 +46,9 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
     QImage *img;
     if (path.contains(".elk"))
     {
-        img = new QImage();
+        ELKFile *elk = new ELKFile();
+        elk->Import(path, img);
+        delete elk;
     } else {
         img = new QImage(path);
     }
@@ -198,22 +201,9 @@ QString Editor::SaveFileAs(QString format)
         {
             drawarea->saveImage(filename);
         } else {
-            QImage img(drawarea->image);
-            QFile file(filename);
-            if (file.open(QIODevice::ReadWrite))
-            {
-                QTextStream s(&file);
-                s << img.size().width() << "x" << img.size().height() << "\n"; // Specify image dimensions
-                for(int i = 0;i < img.size().height();i++)
-                {
-                    s << "\n";
-                    for(int u = 0;u < img.size().width();u++)
-                    {
-                        s << img.pixelColor(u,i).name() << " ";
-                    }
-                }
-                file.close();
-            }
+            ELKFile *elk;
+            bool status = elk->Construct(drawarea->image, filename);
+            delete elk;
         }
     }
     return filename;

@@ -11,6 +11,7 @@ CONFIG += c++11 console
 SOURCES += \
     colorbutton.cpp \
     editor.cpp \
+    elkfile.cpp \
     globals.cpp \
     imageimport.cpp \
     main.cpp \
@@ -27,6 +28,7 @@ SOURCES += \
 HEADERS += \
     colorbutton.h \
     editor.h \
+    elkfile.h \
     globals.h \
     imageimport.h \
     menu.h \
