@@ -48,21 +48,23 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
     {
         ELKFile elk;
         *img = elk.Import(path);
-        qDebug() << img->size();
     } else {
         img = new QImage(path);
     }
 
+    int width = img->size().width();
+    int height = img->size().height();
+
     drawarea = new ScribbleArea;
     drawarea->openImage(*img);
-    drawarea->setMaximumSize(img->width(), img->height());
-    drawarea->setMinimumSize(img->width(), img->height());
-    drawarea->resize(img->width(), img->height());
+    drawarea->setMaximumSize(width, height);
+    drawarea->setMinimumSize(width, height);
+    drawarea->resize(width, height);
     QScrollArea *sa = ui->scrollArea;
     sa->setWidgetResizable(true);
     sa->setWidget(drawarea);
     sa->setAlignment(Qt::AlignCenter);
-
+    // qDebug() << drawarea->image.size();
     imagePath = path;
     setup();
 

@@ -29,7 +29,7 @@ bool ScribbleArea::openImage(QImage xImage)
 {
     QImage loadedImage = xImage;
 
-    QSize newSize = loadedImage.size().expandedTo(size());
+    QSize newSize = loadedImage.size();
     resizeImage(&loadedImage, newSize);
     image = loadedImage;
     modified = false;
@@ -100,8 +100,8 @@ void ScribbleArea::paintEvent(QPaintEvent *event)
 void ScribbleArea::resizeEvent(QResizeEvent *event)
 {
     if (width() > image.width() || height() > image.height()) {
-        int newWidth = qMax(width() + 128, image.width());
-        int newHeight = qMax(height() + 128, image.height());
+        int newWidth = qMax(width(), image.width());
+        int newHeight = qMax(height(), image.height());
         resizeImage(&image, QSize(newWidth, newHeight));
         update();
     }
