@@ -46,9 +46,8 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
     QImage *img;
     if (path.contains(".elk"))
     {
-        ELKFile *elk = new ELKFile();
-        elk->Import(path, img);
-        delete elk;
+        ELKFile elk;
+        elk.Import(path, img);
     } else {
         img = new QImage(path);
     }
@@ -197,13 +196,12 @@ QString Editor::SaveFileAs(QString format)
     QString filename = QFileDialog::getSaveFileName(this, "Save file", "/home/"+ qgetenv("USER")+"/untitled."+format);
     if (!filename.isEmpty())
     {
-        if (format != "elk")
+        if (format == "elk")
         {
-            drawarea->saveImage(filename);
+            ELKFile elk;
+            elk.Construct(drawarea->image, filename);
         } else {
-            ELKFile *elk;
-            bool status = elk->Construct(drawarea->image, filename);
-            delete elk;
+            drawarea->saveImage(filename);
         }
     }
     return filename;
