@@ -43,11 +43,12 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
 {
     ui->setupUi(this);
     imageColorScheme = colorScheme;
-    QImage *img;
+    QImage *img = new QImage;
     if (path.contains(".elk"))
     {
         ELKFile elk;
-        elk.Import(path, img);
+        *img = elk.Import(path);
+        qDebug() << img->size();
     } else {
         img = new QImage(path);
     }

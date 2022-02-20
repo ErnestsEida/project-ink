@@ -8,7 +8,7 @@ class ELKFile
 public:
     ELKFile();
     bool Construct(QImage image, QString path);
-    QImage Import(QString, QImage*);
+    QImage Import(QString);
 };
 
 #endif // ELKFILE_H
