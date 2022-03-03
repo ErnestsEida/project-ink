@@ -1,5 +1,1 @@
-Ink-build/*.o
-Ink-build/*.cpp
-Ink-build/*.h
-Ink-build/Ink
-Ink-build/.qmake.stash
+Ink-build/*
