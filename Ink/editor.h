@@ -8,6 +8,7 @@
 #include "optionsmanager.h"
 #include "quiplashdialog.h"
 #include <QCloseEvent>
+#include "imageconverter.h"
 
 namespace Ui {
 class Editor;

@@ -7,7 +7,6 @@ class Globals
 {
 public:
     static QString basePath;
-    Globals();
 };
 
 #endif // GLOBALS_H

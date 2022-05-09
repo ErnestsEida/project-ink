@@ -13,6 +13,7 @@ SOURCES += \
     editor.cpp \
     elkfile.cpp \
     globals.cpp \
+    imageconverter.cpp \
     imageimport.cpp \
     main.cpp \
     menu.cpp \
@@ -30,6 +31,7 @@ HEADERS += \
     editor.h \
     elkfile.h \
     globals.h \
+    imageconverter.h \
     imageimport.h \
     menu.h \
     newimage.h \

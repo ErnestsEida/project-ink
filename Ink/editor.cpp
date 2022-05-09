@@ -299,6 +299,8 @@ void Editor::on_actionGreyscale_triggered()
 {
     imageColorScheme = "Greyscale";
     UpdateColorPalette();
+    ImageConverter * converter = new ImageConverter();
+    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme));
 }
 
 
@@ -306,6 +308,8 @@ void Editor::on_actionInverse_triggered()
 {
     imageColorScheme = "Inverse";
     UpdateColorPalette();
+    ImageConverter * converter = new ImageConverter();
+    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme));
 }
 
 
