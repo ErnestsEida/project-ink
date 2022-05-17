@@ -18,7 +18,7 @@ void Editor::setup()
     srand(time(0));
 }
 
-Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PARAMETERS
+Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PARAMETERS ( NEW IMAGE )
     QMainWindow(parent),
     ui(new Ui::Editor)
 {
@@ -37,7 +37,7 @@ Editor::Editor(QWidget *parent, int width, int height, QString colorScheme) : //
     setup();
 }
 
-Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PATH
+Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR CONSTRUCTOR WITH PATH ( IMPORT )
     QMainWindow(parent),
     ui(new Ui::Editor)
 {
@@ -64,7 +64,7 @@ Editor::Editor(QWidget *parent, QString path, QString colorScheme) : // EDITOR C
     sa->setWidgetResizable(true);
     sa->setWidget(drawarea);
     sa->setAlignment(Qt::AlignCenter);
-    // qDebug() << drawarea->image.size();
+
     imagePath = path;
     setup();
 
@@ -78,15 +78,18 @@ void Editor::closeEvent(QCloseEvent *event)
         QMessageBox msgBox;
         msgBox.setText("Image has been modified.");
         msgBox.setInformativeText("Do you want to save this image?");
-        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard);
+        msgBox.setStandardButtons(QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Save);
         int status = msgBox.exec();
+
         if (status == QMessageBox::Save)
         {
             OptionsManager *manager = new OptionsManager;
             QHash<QString, QString> options = manager->GetOptions()["saving"];
             SaveFileAs(options["format"]);
             delete manager;
+        } else if (status == QMessageBox::Cancel){
+            event->ignore();
         }
     }
 }

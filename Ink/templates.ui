@@ -45,28 +45,62 @@
         <x>0</x>
         <y>0</y>
         <width>460</width>
-        <height>529</height>
+        <height>534</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0">
-        <widget class="QRadioButton" name="HD">
+       <item row="0" column="0">
+        <widget class="QRadioButton" name="A4">
          <property name="text">
-          <string>16:9 ( 1920x1080 )</string>
+          <string>A4</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="1" column="1">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/templates/templates.qrc">:/icons/a5_icon.png</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="pixmap">
+          <pixmap resource="../images/templates/templates.qrc">:/icons/a4_icon.png</pixmap>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QRadioButton" name="radioButton_6">
+         <property name="text">
+          <string>? ? ? ?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QRadioButton" name="Icon">
+         <property name="text">
+          <string>Icon (64x64)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
         <widget class="QRadioButton" name="Square">
          <property name="text">
           <string>Square ( 512x512 )</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QRadioButton" name="radioButton_6">
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>? ? ? ?</string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -77,17 +111,31 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="0">
-        <widget class="QRadioButton" name="A4">
+       <item row="3" column="0">
+        <widget class="QRadioButton" name="HD">
          <property name="text">
-          <string>A4</string>
+          <string>16:9 ( 1920x1080 )</string>
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QRadioButton" name="Icon">
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>Icon (64x64)</string>
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string/>
          </property>
         </widget>
        </item>
@@ -100,7 +148,6 @@
      <property name="font">
       <font>
        <pointsize>24</pointsize>
-       <weight>75</weight>
        <bold>true</bold>
       </font>
      </property>
@@ -121,6 +168,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../images/templates/templates.qrc"/>
+ </resources>
  <connections/>
 </ui>

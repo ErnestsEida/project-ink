@@ -7,7 +7,6 @@ ScribbleArea::ScribbleArea(QWidget *parent) : QWidget(parent)
     scribbling = false;
     myPenWidth = 1;
     myPenColor = Qt::black;
-    undoStack.append(image);
 }
 
 bool ScribbleArea::openImage(const QString &fileName)
@@ -19,7 +18,6 @@ bool ScribbleArea::openImage(const QString &fileName)
     QSize newSize = loadedImage.size().expandedTo(size());
     resizeImage(&loadedImage, newSize);
     image = loadedImage;
-    undoStack.append(image);
     modified = false;
     update();
     return true;
@@ -106,6 +104,7 @@ void ScribbleArea::resizeEvent(QResizeEvent *event)
         update();
     }
     QWidget::resizeEvent(event);
+    undoStack.append(image);
 }
 
 void ScribbleArea::drawLineTo(const QPoint &endPoint)
