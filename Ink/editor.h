@@ -10,6 +10,7 @@
 #include <QCloseEvent>
 #include "imageconverter.h"
 #include "recentimages.h"
+#include "inversesensetivitycontrols.h"
 
 namespace Ui {
 class Editor;
@@ -82,8 +83,11 @@ private slots:
 
     void on_pencilTool_clicked();
 
+    void on_actionRedo_triggered();
+
 public slots:
     void QuiplashCollect(QString imagePath);
+    void InverseImage(int sensetivity);
 
 private:
     Ui::Editor *ui;

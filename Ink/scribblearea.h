@@ -31,6 +31,7 @@ public:
     QColor penColor() const { return myPenColor; }
     int penWidth() const { return myPenWidth; }
     void undo();
+    void redo();
 
 public slots:
     void clearImage();
@@ -50,6 +51,7 @@ private:
     void resizeImage(QImage *image, const QSize &newSize);
 
     QList<QImage> undoStack;
+    QList<QImage> redoStack;
     bool modified;
     bool scribbling;
     int myPenWidth;

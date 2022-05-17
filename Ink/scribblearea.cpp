@@ -193,8 +193,18 @@ void ScribbleArea::undo()
 {
     if (undoStack.length() > 1)
     {
+        redoStack.append(undoStack.last());
         undoStack.removeLast();
         openImage(undoStack.last());
+    }
+}
+
+void ScribbleArea::redo(){
+    if (redoStack.length() > 0)
+    {
+        openImage(redoStack.last());
+        undoStack.append(redoStack.last());
+        redoStack.removeLast();
     }
 }
 

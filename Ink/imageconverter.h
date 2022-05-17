@@ -9,7 +9,7 @@ class ImageConverter
 public:
     ImageConverter();
 
-    QImage perform(QImage, QString);
+    QImage perform(QImage, QString, int);
 };
 
 #endif // IMAGECONVERTER_H

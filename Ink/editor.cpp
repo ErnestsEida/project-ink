@@ -309,18 +309,23 @@ void Editor::on_actionGreyscale_triggered()
     imageColorScheme = "Greyscale";
     UpdateColorPalette();
     ImageConverter * converter = new ImageConverter();
-    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme));
+    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme, 0));
 }
 
 
 void Editor::on_actionInverse_triggered()
 {
+    InverseSensetivityControls *InverseControls = new InverseSensetivityControls(this);
+    connect(InverseControls, &InverseSensetivityControls::sendData, this, &Editor::InverseImage);
+    InverseControls->exec();
+}
+
+void Editor::InverseImage(int sensetivity){
     imageColorScheme = "Inverse";
     UpdateColorPalette();
     ImageConverter * converter = new ImageConverter();
-    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme));
+    drawarea->openImage(converter->perform(drawarea->image, imageColorScheme, sensetivity));
 }
-
 
 void Editor::on_actionDo_quiplash_with_triggered()
 {
@@ -351,5 +356,11 @@ void Editor::on_rectangleTool_clicked()
 void Editor::on_pencilTool_clicked()
 {
     emit this->changeTool(ScribbleArea::ToolType::Pencil);
+}
+
+
+void Editor::on_actionRedo_triggered()
+{
+    drawarea->redo();
 }
 

@@ -15,6 +15,7 @@ SOURCES += \
     globals.cpp \
     imageconverter.cpp \
     imageimport.cpp \
+    inversesensetivitycontrols.cpp \
     main.cpp \
     menu.cpp \
     newimage.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     globals.h \
     imageconverter.h \
     imageimport.h \
+    inversesensetivitycontrols.h \
     menu.h \
     newimage.h \
     options.h \
@@ -46,6 +48,7 @@ HEADERS += \
 FORMS += \
     editor.ui \
     imageimport.ui \
+    inversesensetivitycontrols.ui \
     menu.ui \
     newimage.ui \
     options.ui \

@@ -58,6 +58,7 @@ SOURCES       = ../Ink/colorbutton.cpp \
 		../Ink/globals.cpp \
 		../Ink/imageconverter.cpp \
 		../Ink/imageimport.cpp \
+		../Ink/inversesensetivitycontrols.cpp \
 		../Ink/main.cpp \
 		../Ink/menu.cpp \
 		../Ink/newimage.cpp \
@@ -71,6 +72,7 @@ SOURCES       = ../Ink/colorbutton.cpp \
 		moc_colorbutton.cpp \
 		moc_editor.cpp \
 		moc_imageimport.cpp \
+		moc_inversesensetivitycontrols.cpp \
 		moc_menu.cpp \
 		moc_newimage.cpp \
 		moc_options.cpp \
@@ -83,6 +85,7 @@ OBJECTS       = colorbutton.o \
 		globals.o \
 		imageconverter.o \
 		imageimport.o \
+		inversesensetivitycontrols.o \
 		main.o \
 		menu.o \
 		newimage.o \
@@ -97,6 +100,7 @@ OBJECTS       = colorbutton.o \
 		moc_colorbutton.o \
 		moc_editor.o \
 		moc_imageimport.o \
+		moc_inversesensetivitycontrols.o \
 		moc_menu.o \
 		moc_newimage.o \
 		moc_options.o \
@@ -247,6 +251,7 @@ DIST          = ../../../../Qt/6.2.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../Ink/globals.h \
 		../Ink/imageconverter.h \
 		../Ink/imageimport.h \
+		../Ink/inversesensetivitycontrols.h \
 		../Ink/menu.h \
 		../Ink/newimage.h \
 		../Ink/options.h \
@@ -261,6 +266,7 @@ DIST          = ../../../../Qt/6.2.4/gcc_64/mkspecs/features/spec_pre.prf \
 		../Ink/globals.cpp \
 		../Ink/imageconverter.cpp \
 		../Ink/imageimport.cpp \
+		../Ink/inversesensetivitycontrols.cpp \
 		../Ink/main.cpp \
 		../Ink/menu.cpp \
 		../Ink/newimage.cpp \
@@ -279,7 +285,7 @@ TARGET        = Ink
 first: all
 ####### Build rules
 
-Ink: ui_editor.h ui_imageimport.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h $(OBJECTS)  
+Ink: ui_editor.h ui_imageimport.h ui_inversesensetivitycontrols.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Ink/Ink.pro ../../../../Qt/6.2.4/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../Qt/6.2.4/gcc_64/mkspecs/features/spec_pre.prf \
@@ -585,9 +591,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../images/templates/templates.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/6.2.4/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ink/colorbutton.h ../Ink/editor.h ../Ink/elkfile.h ../Ink/globals.h ../Ink/imageconverter.h ../Ink/imageimport.h ../Ink/menu.h ../Ink/newimage.h ../Ink/options.h ../Ink/optionsmanager.h ../Ink/quiplashdialog.h ../Ink/quiplashmodule.h ../Ink/recentimages.h ../Ink/scribblearea.h ../Ink/templates.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ink/colorbutton.cpp ../Ink/editor.cpp ../Ink/elkfile.cpp ../Ink/globals.cpp ../Ink/imageconverter.cpp ../Ink/imageimport.cpp ../Ink/main.cpp ../Ink/menu.cpp ../Ink/newimage.cpp ../Ink/options.cpp ../Ink/optionsmanager.cpp ../Ink/quiplashdialog.cpp ../Ink/quiplashmodule.cpp ../Ink/recentimages.cpp ../Ink/scribblearea.cpp ../Ink/templates.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ink/editor.ui ../Ink/imageimport.ui ../Ink/menu.ui ../Ink/newimage.ui ../Ink/options.ui ../Ink/quiplashdialog.ui ../Ink/templates.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ink/colorbutton.h ../Ink/editor.h ../Ink/elkfile.h ../Ink/globals.h ../Ink/imageconverter.h ../Ink/imageimport.h ../Ink/inversesensetivitycontrols.h ../Ink/menu.h ../Ink/newimage.h ../Ink/options.h ../Ink/optionsmanager.h ../Ink/quiplashdialog.h ../Ink/quiplashmodule.h ../Ink/recentimages.h ../Ink/scribblearea.h ../Ink/templates.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ink/colorbutton.cpp ../Ink/editor.cpp ../Ink/elkfile.cpp ../Ink/globals.cpp ../Ink/imageconverter.cpp ../Ink/imageimport.cpp ../Ink/inversesensetivitycontrols.cpp ../Ink/main.cpp ../Ink/menu.cpp ../Ink/newimage.cpp ../Ink/options.cpp ../Ink/optionsmanager.cpp ../Ink/quiplashdialog.cpp ../Ink/quiplashmodule.cpp ../Ink/recentimages.cpp ../Ink/scribblearea.cpp ../Ink/templates.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ink/editor.ui ../Ink/imageimport.ui ../Ink/inversesensetivitycontrols.ui ../Ink/menu.ui ../Ink/newimage.ui ../Ink/options.ui ../Ink/quiplashdialog.ui ../Ink/templates.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -630,9 +636,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../../../Qt/6.2.4/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h ../../../../Qt/6.2.4/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_colorbutton.cpp moc_editor.cpp moc_imageimport.cpp moc_menu.cpp moc_newimage.cpp moc_options.cpp moc_quiplashdialog.cpp moc_scribblearea.cpp moc_templates.cpp
+compiler_moc_header_make_all: moc_colorbutton.cpp moc_editor.cpp moc_imageimport.cpp moc_inversesensetivitycontrols.cpp moc_menu.cpp moc_newimage.cpp moc_options.cpp moc_quiplashdialog.cpp moc_scribblearea.cpp moc_templates.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_colorbutton.cpp moc_editor.cpp moc_imageimport.cpp moc_menu.cpp moc_newimage.cpp moc_options.cpp moc_quiplashdialog.cpp moc_scribblearea.cpp moc_templates.cpp
+	-$(DEL_FILE) moc_colorbutton.cpp moc_editor.cpp moc_imageimport.cpp moc_inversesensetivitycontrols.cpp moc_menu.cpp moc_newimage.cpp moc_options.cpp moc_quiplashdialog.cpp moc_scribblearea.cpp moc_templates.cpp
 moc_colorbutton.cpp: ../Ink/colorbutton.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qpushbutton.h \
@@ -1254,6 +1260,7 @@ moc_editor.cpp: ../Ink/editor.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		moc_predefs.h \
 		../../../../Qt/6.2.4/gcc_64/libexec/moc
 	/home/deb/Qt/6.2.4/gcc_64/libexec/moc $(DEFINES) --include /home/deb/Documents/git/project-ink/Ink-build/moc_predefs.h -I/home/deb/Qt/6.2.4/gcc_64/mkspecs/linux-g++ -I/home/deb/Documents/git/project-ink/Ink -I/home/deb/Qt/6.2.4/gcc_64/include -I/home/deb/Qt/6.2.4/gcc_64/include/QtWidgets -I/home/deb/Qt/6.2.4/gcc_64/include/QtGui -I/home/deb/Qt/6.2.4/gcc_64/include/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Ink/editor.h -o moc_editor.cpp
@@ -1746,9 +1753,142 @@ moc_imageimport.cpp: ../Ink/imageimport.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		moc_predefs.h \
 		../../../../Qt/6.2.4/gcc_64/libexec/moc
 	/home/deb/Qt/6.2.4/gcc_64/libexec/moc $(DEFINES) --include /home/deb/Documents/git/project-ink/Ink-build/moc_predefs.h -I/home/deb/Qt/6.2.4/gcc_64/mkspecs/linux-g++ -I/home/deb/Documents/git/project-ink/Ink -I/home/deb/Qt/6.2.4/gcc_64/include -I/home/deb/Qt/6.2.4/gcc_64/include/QtWidgets -I/home/deb/Qt/6.2.4/gcc_64/include/QtGui -I/home/deb/Qt/6.2.4/gcc_64/include/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Ink/imageimport.h -o moc_imageimport.cpp
+
+moc_inversesensetivitycontrols.cpp: ../Ink/inversesensetivitycontrols.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcompare.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiterable.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmath.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringconverter.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qscreen.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QList \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QObject \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QRect \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QSize \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QSizeF \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/QTransform \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnativeinterface.h \
+		moc_predefs.h \
+		../../../../Qt/6.2.4/gcc_64/libexec/moc
+	/home/deb/Qt/6.2.4/gcc_64/libexec/moc $(DEFINES) --include /home/deb/Documents/git/project-ink/Ink-build/moc_predefs.h -I/home/deb/Qt/6.2.4/gcc_64/mkspecs/linux-g++ -I/home/deb/Documents/git/project-ink/Ink -I/home/deb/Qt/6.2.4/gcc_64/include -I/home/deb/Qt/6.2.4/gcc_64/include/QtWidgets -I/home/deb/Qt/6.2.4/gcc_64/include/QtGui -I/home/deb/Qt/6.2.4/gcc_64/include/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Ink/inversesensetivitycontrols.h -o moc_inversesensetivitycontrols.cpp
 
 moc_menu.cpp: ../Ink/menu.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QMainWindow \
@@ -2240,6 +2380,7 @@ moc_menu.cpp: ../Ink/menu.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		../Ink/imageimport.h \
 		moc_predefs.h \
 		../../../../Qt/6.2.4/gcc_64/libexec/moc
@@ -2734,6 +2875,7 @@ moc_newimage.cpp: ../Ink/newimage.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		moc_predefs.h \
 		../../../../Qt/6.2.4/gcc_64/libexec/moc
 	/home/deb/Qt/6.2.4/gcc_64/libexec/moc $(DEFINES) --include /home/deb/Documents/git/project-ink/Ink-build/moc_predefs.h -I/home/deb/Qt/6.2.4/gcc_64/mkspecs/linux-g++ -I/home/deb/Documents/git/project-ink/Ink -I/home/deb/Qt/6.2.4/gcc_64/include -I/home/deb/Qt/6.2.4/gcc_64/include/QtWidgets -I/home/deb/Qt/6.2.4/gcc_64/include/QtGui -I/home/deb/Qt/6.2.4/gcc_64/include/QtCore -I. -I/usr/include/c++/10 -I/usr/include/x86_64-linux-gnu/c++/10 -I/usr/include/c++/10/backward -I/usr/lib/gcc/x86_64-linux-gnu/10/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Ink/newimage.h -o moc_newimage.cpp
@@ -3622,9 +3764,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_editor.h ui_imageimport.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h
+compiler_uic_make_all: ui_editor.h ui_imageimport.h ui_inversesensetivitycontrols.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_editor.h ui_imageimport.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h
+	-$(DEL_FILE) ui_editor.h ui_imageimport.h ui_inversesensetivitycontrols.h ui_menu.h ui_newimage.h ui_options.h ui_quiplashdialog.h ui_templates.h
 ui_editor.h: ../Ink/editor.ui \
 		../../../../Qt/6.2.4/gcc_64/libexec/uic
 	/home/deb/Qt/6.2.4/gcc_64/libexec/uic ../Ink/editor.ui -o ui_editor.h
@@ -3632,6 +3774,10 @@ ui_editor.h: ../Ink/editor.ui \
 ui_imageimport.h: ../Ink/imageimport.ui \
 		../../../../Qt/6.2.4/gcc_64/libexec/uic
 	/home/deb/Qt/6.2.4/gcc_64/libexec/uic ../Ink/imageimport.ui -o ui_imageimport.h
+
+ui_inversesensetivitycontrols.h: ../Ink/inversesensetivitycontrols.ui \
+		../../../../Qt/6.2.4/gcc_64/libexec/uic
+	/home/deb/Qt/6.2.4/gcc_64/libexec/uic ../Ink/inversesensetivitycontrols.ui -o ui_inversesensetivitycontrols.h
 
 ui_menu.h: ../Ink/menu.ui \
 		../../../../Qt/6.2.4/gcc_64/libexec/uic
@@ -4283,7 +4429,9 @@ editor.o: ../Ink/editor.cpp ../Ink/editor.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		ui_editor.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/QIcon \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QGridLayout \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QGroupBox \
@@ -5578,6 +5726,7 @@ imageimport.o: ../Ink/imageimport.cpp ../Ink/imageimport.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		ui_imageimport.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QGridLayout \
@@ -5588,6 +5737,137 @@ imageimport.o: ../Ink/imageimport.cpp ../Ink/imageimport.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QFileDialog \
 		../../../../Qt/6.2.4/gcc_64/include/QtGui/QImageReader
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o imageimport.o ../Ink/imageimport.cpp
+
+inversesensetivitycontrols.o: ../Ink/inversesensetivitycontrols.cpp ../Ink/inversesensetivitycontrols.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QDialog \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qdialog.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtguiglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtgui-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qwidget.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qwindowdefs.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtmetamacros.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qwindowdefs_win.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainertools_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearrayalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearrayview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qanystringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qutf8stringview.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringtokenizer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringbuilder.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcompare.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiodevicebase.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiterable.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmetacontainer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontainerinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtaggedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmath.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qbindingstorage.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmargins.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpaintdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qrect.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsize.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpalette.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qcolor.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qrgb.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qrgba64.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qbrush.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qimage.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpixelformat.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qtransform.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpolygon.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qregion.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qline.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpixmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfont.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfontmetrics.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qfontinfo.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/qsizepolicy.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qcursor.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qbitmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qkeysequence.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qevent.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qpointer.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qurl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qshareddata_impl.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qhash.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qstringconverter.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qset.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qeventpoint.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qvector2d.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qvectornd.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qpointingdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qinputdevice.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/qscreen.h \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QList \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QObject \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QRect \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QSize \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/QSizeF \
+		../../../../Qt/6.2.4/gcc_64/include/QtGui/QTransform \
+		../../../../Qt/6.2.4/gcc_64/include/QtCore/qnativeinterface.h \
+		ui_inversesensetivitycontrols.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o inversesensetivitycontrols.o ../Ink/inversesensetivitycontrols.cpp
 
 main.o: ../Ink/main.cpp ../Ink/menu.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QMainWindow \
@@ -6079,6 +6359,7 @@ main.o: ../Ink/main.cpp ../Ink/menu.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		../Ink/imageimport.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QApplication
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Ink/main.cpp
@@ -6573,6 +6854,7 @@ menu.o: ../Ink/menu.cpp ../Ink/menu.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		../Ink/imageimport.h \
 		ui_menu.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QApplication \
@@ -7074,6 +7356,7 @@ newimage.o: ../Ink/newimage.cpp ../Ink/newimage.h \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
 		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h \
 		ui_newimage.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/6.2.4/gcc_64/include/QtWidgets/QFrame \
@@ -9648,7 +9931,8 @@ templates.o: ../Ink/templates.cpp ../Ink/templates.h \
 		../../../../Qt/6.2.4/gcc_64/include/QtGui/QCloseEvent \
 		../Ink/imageconverter.h \
 		../Ink/recentimages.h \
-		../Ink/globals.h
+		../Ink/globals.h \
+		../Ink/inversesensetivitycontrols.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o templates.o ../Ink/templates.cpp
 
 qrc_templates.o: qrc_templates.cpp 
@@ -9662,6 +9946,9 @@ moc_editor.o: moc_editor.cpp
 
 moc_imageimport.o: moc_imageimport.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_imageimport.o moc_imageimport.cpp
+
+moc_inversesensetivitycontrols.o: moc_inversesensetivitycontrols.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_inversesensetivitycontrols.o moc_inversesensetivitycontrols.cpp
 
 moc_menu.o: moc_menu.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_menu.o moc_menu.cpp
