@@ -22,6 +22,7 @@ SOURCES += \
     optionsmanager.cpp \
     quiplashdialog.cpp \
     quiplashmodule.cpp \
+    recentimages.cpp \
     scribblearea.cpp \
     templates.cpp \
     tools.cpp
@@ -39,6 +40,7 @@ HEADERS += \
     optionsmanager.h \
     quiplashdialog.h \
     quiplashmodule.h \
+    recentimages.h \
     scribblearea.h \
     templates.h \
     tools.h

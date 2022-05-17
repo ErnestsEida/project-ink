@@ -80,6 +80,7 @@ void Options::on_closeButton_clicked() // Close button
 
 void Options::on_saveButton_clicked() // Save button
 {
+    QMessageBox::information(this, "Info", "Options successfully saved!");
     QHash<QString, QHash<QString, QString>> options = SaveOptions();
     OptionsManager *manager = new OptionsManager();
     manager->SetOptions(options);
@@ -89,7 +90,9 @@ void Options::on_saveButton_clicked() // Save button
 
 void Options::on_toolButton_clicked()
 {
-    QString dir = QFileDialog::getExistingDirectory(this, tr("Select Directory"),"/home",QFileDialog::ShowDirsOnly);
-    ui->importPath->setPlainText(dir);
+    QString previousPath = ui->importPath->toPlainText();
+    QString dir = QFileDialog::getExistingDirectory(this, tr("Select Directory"),"/home", QFileDialog::ShowDirsOnly);
+    QString newPath = dir == "" ? previousPath : dir;
+    ui->importPath->setPlainText(newPath);
 }
 

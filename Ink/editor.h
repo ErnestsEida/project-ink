@@ -9,6 +9,7 @@
 #include "quiplashdialog.h"
 #include <QCloseEvent>
 #include "imageconverter.h"
+#include "recentimages.h"
 
 namespace Ui {
 class Editor;
