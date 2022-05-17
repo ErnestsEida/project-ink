@@ -10,6 +10,13 @@ class ScribbleArea : public QWidget
     Q_OBJECT
 
 public:
+    enum ToolType {
+        Pencil,
+        Line,
+        Rectangle,
+        Circle
+    };
+
     ScribbleArea(QWidget *parent = 0);
 
     QImage image;
@@ -27,6 +34,7 @@ public:
 
 public slots:
     void clearImage();
+    void changeTool(ToolType);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -37,12 +45,15 @@ protected:
 
 private:
     void drawLineTo(const QPoint &endPoint);
+    void drawRectTo(const QPoint &endPoint);
+    void drawCircle(const QPoint &endPoint);
     void resizeImage(QImage *image, const QSize &newSize);
 
     QList<QImage> undoStack;
     bool modified;
     bool scribbling;
     int myPenWidth;
+    ToolType currentTool;
     QColor myPenColor;
     QPoint lastPoint;
 };

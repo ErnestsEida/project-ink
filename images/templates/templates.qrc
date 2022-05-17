@@ -3,4 +3,10 @@
         <file>a4_icon.png</file>
         <file>a5_icon.png</file>
     </qresource>
+    <qresource prefix="/button_icons">
+        <file>circle_icon.png</file>
+        <file>line_icon.png</file>
+        <file>pencil_icon.png</file>
+        <file>rectangle_icon.png</file>
+    </qresource>
 </RCC>

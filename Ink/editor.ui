@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>320</width>
-    <height>180</height>
+    <height>512</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -38,7 +38,7 @@
          <x>0</x>
          <y>0</y>
          <width>1074</width>
-         <height>656</height>
+         <height>654</height>
         </rect>
        </property>
       </widget>
@@ -62,12 +62,18 @@
        <string>Tools</string>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="6" column="0" colspan="4">
-        <widget class="QGroupBox" name="colorPalette">
-         <property name="title">
-          <string>Colors</string>
+       <item row="4" column="0" colspan="4">
+        <widget class="QSlider" name="penWidthSlider">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
          </property>
-         <layout class="QGridLayout" name="gridLayout_3"/>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="3">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Pen width</string>
+         </property>
         </widget>
        </item>
        <item row="3" column="3">
@@ -80,13 +86,6 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="4">
-        <widget class="QSlider" name="penWidthSlider">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
        <item row="5" column="0" colspan="4">
         <widget class="QPushButton" name="colorWheelButton">
          <property name="text">
@@ -94,11 +93,93 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="3">
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Pen width</string>
+       <item row="6" column="0" colspan="4">
+        <widget class="QGroupBox" name="colorPalette">
+         <property name="title">
+          <string>Colors</string>
          </property>
+         <layout class="QGridLayout" name="gridLayout_3"/>
+        </widget>
+       </item>
+       <item row="7" column="0" colspan="4">
+        <widget class="QGroupBox" name="toolBox">
+         <property name="title">
+          <string>Tools</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="0" column="0">
+           <layout class="QGridLayout" name="gridLayout_4">
+            <item row="0" column="1">
+             <widget class="QToolButton" name="circleTool">
+              <property name="text">
+               <string>O</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/templates/templates.qrc">
+                <normaloff>:/button_icons/circle_icon.png</normaloff>:/button_icons/circle_icon.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>64</width>
+                <height>64</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QToolButton" name="lineTool">
+              <property name="text">
+               <string>-</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/templates/templates.qrc">
+                <normaloff>:/button_icons/line_icon.png</normaloff>:/button_icons/line_icon.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>96</width>
+                <height>64</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QToolButton" name="rectangleTool">
+              <property name="text">
+               <string>[]</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/templates/templates.qrc">
+                <normaloff>:/button_icons/rectangle_icon.png</normaloff>:/button_icons/rectangle_icon.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>64</width>
+                <height>64</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QToolButton" name="pencilTool">
+              <property name="text">
+               <string>/</string>
+              </property>
+              <property name="icon">
+               <iconset resource="../images/templates/templates.qrc">
+                <normaloff>:/button_icons/pencil_icon.png</normaloff>:/button_icons/pencil_icon.png</iconset>
+              </property>
+              <property name="iconSize">
+               <size>
+                <width>64</width>
+                <height>64</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -112,7 +193,7 @@
      <x>0</x>
      <y>0</y>
      <width>1280</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuPreferences">
@@ -265,7 +346,9 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../images/templates/templates.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>penWidthSlider</sender>

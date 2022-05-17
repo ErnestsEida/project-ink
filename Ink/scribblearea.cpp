@@ -6,6 +6,7 @@ ScribbleArea::ScribbleArea(QWidget *parent) : QWidget(parent)
     modified = false;
     scribbling = false;
     myPenWidth = 1;
+    currentTool = ToolType::Pencil;
     myPenColor = Qt::black;
 }
 
@@ -76,14 +77,29 @@ void ScribbleArea::mousePressEvent(QMouseEvent *event)
 void ScribbleArea::mouseMoveEvent(QMouseEvent *event)
 {
     if ((event->buttons() & Qt::LeftButton) && scribbling)
-        drawLineTo(event->pos());
+    {
+        if (currentTool == ToolType::Pencil)
+        {
+            drawLineTo(event->pos());
+        }
+    }
 }
 
 void ScribbleArea::mouseReleaseEvent(QMouseEvent *event)
 {
-    if (event->button() == Qt::LeftButton && scribbling) {
-        drawLineTo(event->pos());
-        scribbling = false;
+    if (event->button() == Qt::LeftButton && scribbling)
+    {
+        if (currentTool == ToolType::Line || currentTool == ToolType::Pencil)
+        {
+            drawLineTo(event->pos());
+            scribbling = false;
+        } else if (currentTool == ToolType::Rectangle){
+            drawRectTo(event->pos());
+            scribbling = false;
+        } else if (currentTool == ToolType::Circle){
+            drawCircle(event->pos());
+            scribbling = false;
+        }
     }
     undoStack.append(image);
 }
@@ -93,6 +109,30 @@ void ScribbleArea::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     QRect dirtyRect = event->rect();
     painter.drawImage(dirtyRect, image, dirtyRect);
+
+    // PREVIEWS
+    if (currentTool == ToolType::Line){
+        if (scribbling){
+            painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+            painter.drawLine(lastPoint, this->mapFromGlobal(QCursor::pos()));
+        }
+        update();
+    } else if (currentTool == ToolType::Rectangle){
+        if (scribbling){
+            painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+            QPoint cursorPos = this->mapFromGlobal(QCursor::pos());
+            painter.drawRect(QRect(lastPoint.x(), lastPoint.y(), cursorPos.x() - lastPoint.x(), cursorPos.y() - lastPoint.y()));
+        }
+        update();
+    } else if (currentTool == ToolType::Circle){
+        if (scribbling){
+            painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+            QPoint cursorPos = this->mapFromGlobal(QCursor::pos());
+            painter.drawEllipse(QRect(lastPoint.x(), lastPoint.y(), cursorPos.x() - lastPoint.x(), cursorPos.y() - lastPoint.y()));
+        }
+        update();
+    }
+    // ----------------------------
 }
 
 void ScribbleArea::resizeEvent(QResizeEvent *event)
@@ -107,17 +147,33 @@ void ScribbleArea::resizeEvent(QResizeEvent *event)
     undoStack.append(image);
 }
 
+void ScribbleArea::drawCircle(const QPoint &endPoint){
+    QPainter painter(&image);
+    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter.drawEllipse(QRect(lastPoint.x(), lastPoint.y(), endPoint.x() - lastPoint.x(), endPoint.y() - lastPoint.y()));
+    modified = true;
+    update();
+    lastPoint = endPoint;
+}
+
+void ScribbleArea::drawRectTo(const QPoint &endPoint){
+    QPainter painter(&image);
+    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
+    painter.drawRect(QRect(lastPoint.x(), lastPoint.y(), endPoint.x() - lastPoint.x(), endPoint.y() - lastPoint.y()));
+    modified = true;
+    update();
+    lastPoint = endPoint;
+}
+
 void ScribbleArea::drawLineTo(const QPoint &endPoint)
 {
     QPainter painter(&image);
-    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap,
-                        Qt::RoundJoin));
+    painter.setPen(QPen(myPenColor, myPenWidth, Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin));
     painter.drawLine(lastPoint, endPoint);
     modified = true;
 
     int rad = (myPenWidth / 2) + 2;
-    update(QRect(lastPoint, endPoint).normalized()
-                                     .adjusted(-rad, -rad, +rad, +rad));
+    update(QRect(lastPoint, endPoint).normalized().adjusted(-rad, -rad, +rad, +rad));
     lastPoint = endPoint;
 }
 
@@ -140,4 +196,8 @@ void ScribbleArea::undo()
         undoStack.removeLast();
         openImage(undoStack.last());
     }
+}
+
+void ScribbleArea::changeTool(ToolType tool){
+    this->currentTool = tool;
 }

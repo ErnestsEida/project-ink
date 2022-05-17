@@ -10,7 +10,9 @@ QString imagePath;
 QString imageColorScheme;
 
 void Editor::setup()
-{   this->setWindowState(Qt::WindowMaximized);
+{
+    connect(this, &Editor::changeTool, drawarea, &ScribbleArea::changeTool);
+    this->setWindowState(Qt::WindowMaximized);
     this->setWindowTitle("Ink - Editor");
     ui->colorWheelButton->setStyleSheet("background-color: " + drawarea->penColor().name());
     on_penWidthSlider_valueChanged(4);
@@ -326,3 +328,28 @@ void Editor::on_actionDo_quiplash_with_triggered()
     connect(qDialog, &QuiplashDialog::SendDataToQuiplash, this, &Editor::QuiplashCollect);
     qDialog->exec();
 }
+
+
+void Editor::on_lineTool_clicked()
+{
+    emit this->changeTool(ScribbleArea::ToolType::Line);
+}
+
+
+void Editor::on_circleTool_clicked()
+{
+    emit this->changeTool(ScribbleArea::ToolType::Circle);
+}
+
+
+void Editor::on_rectangleTool_clicked()
+{
+    emit this->changeTool(ScribbleArea::ToolType::Rectangle);
+}
+
+
+void Editor::on_pencilTool_clicked()
+{
+    emit this->changeTool(ScribbleArea::ToolType::Pencil);
+}
+

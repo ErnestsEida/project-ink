@@ -28,6 +28,9 @@ public:
     void setup();
     void UpdateColorPalette();
 
+signals:
+    void changeTool(ScribbleArea::ToolType);
+
 private slots:
     void changeColor(QColor);
 
@@ -70,6 +73,14 @@ private slots:
     void on_actionDo_quiplash_with_triggered();
 
     void on_actionELK_triggered();
+
+    void on_lineTool_clicked();
+
+    void on_circleTool_clicked();
+
+    void on_rectangleTool_clicked();
+
+    void on_pencilTool_clicked();
 
 public slots:
     void QuiplashCollect(QString imagePath);

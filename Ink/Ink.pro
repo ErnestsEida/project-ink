@@ -24,8 +24,7 @@ SOURCES += \
     quiplashmodule.cpp \
     recentimages.cpp \
     scribblearea.cpp \
-    templates.cpp \
-    tools.cpp
+    templates.cpp
 
 HEADERS += \
     colorbutton.h \
@@ -42,8 +41,7 @@ HEADERS += \
     quiplashmodule.h \
     recentimages.h \
     scribblearea.h \
-    templates.h \
-    tools.h
+    templates.h
 
 FORMS += \
     editor.ui \
@@ -52,8 +50,7 @@ FORMS += \
     newimage.ui \
     options.ui \
     quiplashdialog.ui \
-    templates.ui \
-    tools.ui
+    templates.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
