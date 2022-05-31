@@ -209,8 +209,6 @@ QString Editor::SaveFileAs(QString format)
             ELKFile elk;
             elk.Construct(drawarea->image, filename);
         } else {
-            RecentImages x;
-            x.AddRecentImage(filename);
             drawarea->saveImage(filename);
         }
     }
@@ -276,8 +274,6 @@ void Editor::on_actionSave_triggered()
     }
     else
     {
-        RecentImages x;
-        x.AddRecentImage(imagePath);
         drawarea->saveImage(imagePath);
     }
 }

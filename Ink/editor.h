@@ -9,7 +9,6 @@
 #include "quiplashdialog.h"
 #include <QCloseEvent>
 #include "imageconverter.h"
-#include "recentimages.h"
 #include "inversesensetivitycontrols.h"
 
 namespace Ui {

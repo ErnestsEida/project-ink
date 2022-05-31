@@ -21,9 +21,7 @@ SOURCES += \
     newimage.cpp \
     options.cpp \
     optionsmanager.cpp \
-    quiplashdialog.cpp \
-    quiplashmodule.cpp \
-    recentimages.cpp \
+    recentimagebutton.cpp \
     scribblearea.cpp \
     templates.cpp
 
@@ -39,9 +37,7 @@ HEADERS += \
     newimage.h \
     options.h \
     optionsmanager.h \
-    quiplashdialog.h \
-    quiplashmodule.h \
-    recentimages.h \
+    recentimagebutton.h \
     scribblearea.h \
     templates.h
 
@@ -52,7 +48,6 @@ FORMS += \
     menu.ui \
     newimage.ui \
     options.ui \
-    quiplashdialog.ui \
     templates.ui
 
 # Default rules for deployment.

@@ -8,7 +8,6 @@
 #include  "newimage.h"
 #include "imageimport.h"
 #include "options.h"
-#include "recentimages.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class menu; }
@@ -22,7 +21,6 @@ public:
     menu(QWidget *parent = nullptr);
     ~menu();
 
-    void LoadRecentImages();
 
 private slots:
     void on_pushButton_clicked();

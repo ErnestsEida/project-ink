@@ -1,6 +1,7 @@
 #include "menu.h"
 #include "ui_menu.h"
 #include "optionsmanager.h"
+#include "globals.h"
 
 const QString InkPath = "/home/"+qgetenv("USER")+"/Documents/ink";
 
@@ -21,30 +22,6 @@ menu::menu(QWidget *parent)
        manager->CreateOptionFiles();
        delete manager;
     }
-    LoadRecentImages();
-
-}
-
-void menu::LoadRecentImages(){
-    RecentImages ri;
-    QList<QString> images = ri.LoadRecentImages();
-    QGridLayout *newLayout = new QGridLayout();
-    QPushButton *button;
-    int col = 0;
-    int row = 0;
-    foreach(QString imagePath, images){
-        QPixmap pix(imagePath);
-        button = new QPushButton();
-        button->setIcon(pix);
-        button->setIconSize(pix.rect().size());
-        newLayout->addWidget(button, row, col);
-        col++;
-        if (col == 4){
-            col = 0;
-            row++;
-        }
-    }
-    ui->recent_images->setLayout(newLayout);
 }
 
 menu::~menu()
@@ -73,5 +50,11 @@ void menu::on_actionOptions_triggered() // Options Trigger
     options = new Options(this);
     options->setModal(true);
     options->exec();
+}
+
+
+void menu::on_pushButton_3_clicked()
+{
+
 }
 
