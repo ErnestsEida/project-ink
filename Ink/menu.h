@@ -19,6 +19,7 @@ class menu : public QMainWindow
 
 public:
     menu(QWidget *parent = nullptr);
+    void initializeRecentImages();
     ~menu();
 
 

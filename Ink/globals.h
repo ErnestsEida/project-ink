@@ -7,6 +7,7 @@ class Globals
 {
 public:
     static QString basePath;
+    static QString recentImagesStoragePath;
 };
 
 #endif // GLOBALS_H

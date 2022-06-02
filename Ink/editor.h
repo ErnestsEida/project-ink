@@ -6,7 +6,6 @@
 #include <QPainter>
 #include "scribblearea.h"
 #include "optionsmanager.h"
-#include "quiplashdialog.h"
 #include <QCloseEvent>
 #include "imageconverter.h"
 #include "inversesensetivitycontrols.h"
@@ -62,15 +61,11 @@ private slots:
 
     void on_actionChange_Size_triggered();
 
-
-
     void on_actionRGB_triggered();
 
     void on_actionGreyscale_triggered();
 
     void on_actionInverse_triggered();
-
-    void on_actionDo_quiplash_with_triggered();
 
     void on_actionELK_triggered();
 
@@ -85,14 +80,12 @@ private slots:
     void on_actionRedo_triggered();
 
 public slots:
-    void QuiplashCollect(QString imagePath);
     void InverseImage(int sensetivity);
 
 private:
     Ui::Editor *ui;
     Options *options;
     ScribbleArea *drawarea;
-    QuiplashDialog *qDialog;
 };
 
 #endif // EDITOR_H

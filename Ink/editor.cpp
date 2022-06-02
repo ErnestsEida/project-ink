@@ -1,8 +1,8 @@
 #include "editor.h"
 #include "ui_editor.h"
 #include "colorbutton.h"
-#include "quiplashmodule.h"
 #include "elkfile.h"
+#include "globals.h"
 #include <QtWidgets>
 #include <QtGlobal>
 
@@ -160,12 +160,6 @@ void Editor::UpdateColorPalette()
     }
 }
 
-void Editor::QuiplashCollect(QString imagePath)
-{
-    QImage secondImage(imagePath);
-    QuiplashModule module(this, drawarea->image, secondImage);
-}
-
 void Editor::changeColor(QColor color)
 {
     drawarea->setPenColor(color);
@@ -199,6 +193,19 @@ void Editor::on_colorWheelButton_clicked()
     ui->colorWheelButton->setStyleSheet("background-color: " + color.name());
 }
 
+void saveToRecentFiles(QString filename)
+{
+    QFile f(Globals::recentImagesStoragePath);
+    if (f.open(QIODevice::ReadWrite | QIODevice::Append))
+    {
+        QTextStream s(&f);
+        QString fileContents = s.readAll();
+        if (!fileContents.contains(filename))
+               s << filename << "\n";
+        f.close();
+    }
+}
+
 QString Editor::SaveFileAs(QString format)
 {
     QString filename = QFileDialog::getSaveFileName(this, "Save file", "/home/"+ qgetenv("USER")+"/untitled."+format);
@@ -210,6 +217,7 @@ QString Editor::SaveFileAs(QString format)
             elk.Construct(drawarea->image, filename);
         } else {
             drawarea->saveImage(filename);
+            saveToRecentFiles(filename);
         }
     }
     return filename;
@@ -275,6 +283,7 @@ void Editor::on_actionSave_triggered()
     else
     {
         drawarea->saveImage(imagePath);
+        saveToRecentFiles(imagePath);
     }
 }
 
@@ -288,8 +297,8 @@ void Editor::on_actionUndo_triggered()
 void Editor::on_actionChange_Size_triggered()
 {
     QSize currentImage = drawarea->image.size();
-    qDebug() << QInputDialog::getInt(this,"New width", "Width:", currentImage.width(), 0, 4096);
-    qDebug() << QInputDialog::getInt(this,"New height", "Height:", currentImage.height(), 0, 4096);
+    QInputDialog::getInt(this,"New width", "Width:", currentImage.width(), 0, 4096);
+    QInputDialog::getInt(this,"New height", "Height:", currentImage.height(), 0, 4096);
 }
 
 
@@ -322,14 +331,6 @@ void Editor::InverseImage(int sensetivity){
     ImageConverter * converter = new ImageConverter();
     drawarea->openImage(converter->perform(drawarea->image, imageColorScheme, sensetivity));
 }
-
-void Editor::on_actionDo_quiplash_with_triggered()
-{
-    qDialog = new QuiplashDialog();
-    connect(qDialog, &QuiplashDialog::SendDataToQuiplash, this, &Editor::QuiplashCollect);
-    qDialog->exec();
-}
-
 
 void Editor::on_lineTool_clicked()
 {

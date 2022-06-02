@@ -52,9 +52,9 @@ void menu::on_actionOptions_triggered() // Options Trigger
     options->exec();
 }
 
-
-void menu::on_pushButton_3_clicked()
+void menu::initializeRecentImages()
 {
 
 }
+
 
